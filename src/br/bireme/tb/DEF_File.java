@@ -44,24 +44,24 @@ public class DEF_File {
     private static final Pattern OPTION_PATTERN = Pattern.compile(
                                         "(?i)<OPTION.+?VALUE=\"([^\"]+)\".*?>");
     
-    public static Set<URL> generateDefUrls(final URL url) throws IOException {
+    public static Set<String[]> generateDefUrls(final URL url) throws IOException {
         if (url == null) {
             throw new NullPointerException("url");
         }
-        final Set<URL> set = new HashSet<>();
-        final String content = new URLS().loadPage(url)[1];
+        final Set<String[]> set = new HashSet<>();
+        final String content = new URLS().loadPageGet(url)[1];
         final Map<String,Set<String>> selectOpts = getSelectOptions(content);
         final Set<Map<String,String>> postOpts = generatePostOptions(selectOpts);
         final String target = getFormTarget(content).trim();
         final String tgt = (target.endsWith("/")) 
                               ? target.substring(0, target.length()-1) : target;
-        
+        final URL durl = URLS.withDomain(url, tgt);       
+
         for (Map<String,String> map : postOpts) {
-            final StringBuilder builder = new StringBuilder(tgt);
+            final StringBuilder builder = new StringBuilder();
             boolean first = true;
             for (Map.Entry<String,String> entry : map.entrySet()) {
                 if (first) {
-                    builder.append("?");
                     first = false;
                 } else {
                     builder.append("&");
@@ -71,14 +71,13 @@ public class DEF_File {
                 builder.append(entry.getValue());
                 builder.append("\"");
             }
-            
-            final URL durl = URLS.withDomain(url, builder.toString());
-            set.add(durl);
+                        
+            set.add(new String[] {durl.toString(), builder.toString()});
         }
         
         return set;
     }
-    
+
     private static Map<String,Set<String>> getSelectOptions(
                                       final String content) throws IOException {
         assert content != null;
@@ -104,7 +103,8 @@ public class DEF_File {
                                        Map<String,Set<String>> selectOptions) {
         assert selectOptions != null;
         
-        final String REGION_AND_FEDERATION_UNIT = "Região_e_Unidade_da_Federação";
+        final String REGION_AND_FEDERATION_UNIT = 
+                                                "Região_e_Unidade_da_Federação";
         final String YEAR = "Ano";
         final String NOT_ACTIVE = "--Não-Ativa--";
         final String ALL_CATEGORIES = "TODAS_AS_CATEGORIAS__";        
@@ -123,10 +123,10 @@ public class DEF_File {
         selectOptions.remove("A");
         final Set<String> others = selectOptions.keySet();
         
-        for (String lineElem : line) {
-            final Map<String,String> map = new HashMap<>();
+        for (String lineElem : line) {            
             for (String contentElem : content) {
                 for (String timeElem : time) {
+                    final Map<String,String> map = new HashMap<>();
                     map.put("L", lineElem);
                     map.put("C", NOT_ACTIVE);
                     map.put("I", contentElem);
@@ -134,8 +134,8 @@ public class DEF_File {
                     for (String otherElem : others) {
                         map.put(otherElem, ALL_CATEGORIES);
                     }
-                }
-                set.add(map);
+                    set.add(map);
+                }                
             }
         }
         

@@ -28,12 +28,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,29 +47,7 @@ public class Cells {
                                           Pattern.compile("\\s*[\\.\\*]+\\s*");
     private static final Pattern EDITION_PAT = Pattern.compile(
            "\\?node=([^\\&]+)\\&lang=\\w+\\&version=([^\\s]+)");    
-    
-    public static Set<Cell> generateCells(final String url) throws IOException {        
-        if (url == null) {
-            throw new NullPointerException("url");
-        }
-        final Set<Cell> ret = new HashSet<>();
-        final URLS urls = new URLS();
-        final Set<URLS.UrlElem> set = urls.loadCsvFromHtml(new URL(url));
-        
-        System.out.println("Total csv files found: " + set.size());
-
-        for (URLS.UrlElem elem : set) {            
-            final String[] page = urls.loadPage(elem.csv);
-            final String content = page[1];
-            final CSV_File csv = new CSV_File();
-            final Table table = csv.parse(content, CSV_SEPARATOR);
             
-            ret.addAll(genCellsFromTable(table, elem));
-        }
-        
-        return ret;
-    }
-    
     public static void generateFileStructure(final String url,
                                              final String rootDir) 
                                                             throws IOException {
@@ -81,13 +58,17 @@ public class Cells {
             throw new NullPointerException("rootDir");
         }
         final File root = new File(rootDir);
-        if (!deleteFile(root)) {
-            
-        }
+        
+        deleteFile(root);
         if (!root.mkdirs()) {
             throw new IOException("directory [" + root.getCanonicalPath() 
                                                           + "] creation error");
         }              
+        
+        System.out.println("Searching cvs files\n");
+        final Set<String> files = Cells.generateCells(url, root);
+        System.out.println("\nTotal files created: " + files.size());
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(
                                                new File(root, "index.html")))) {
             writer.append("<!DOCTYPE html>\n");
@@ -96,15 +77,8 @@ public class Cells {
             writer.append("  <meta charset=\"UTF-8\">\n");
             writer.append(" </head>\n");
             writer.append(" <body>\n");
-            writer.append("  <h1>Fichas de Qualificação</h1>\n");
-            
-            System.out.println("Generating cells...");
-            final Set<Cell> cells = Cells.generateCells(url);
-            System.out.println("Total cells created: " + cells.size());
-            
-            System.out.println("Saving cells to files...");
-            for (Cell cell : cells) {
-                final String path = saveToFile(cell, root);
+            writer.append("  <h1>Fichas de Qualificação</h1>\n");                                    
+            for (String path : files) {
                 writer.append("  <ul>\n");
                 writer.append("   <li>\n");
                 writer.append("    <a href=\"" + path + "\">" + path +"</a>\n"); 
@@ -112,17 +86,49 @@ public class Cells {
                 writer.append("  </ul>\n");
             }
             writer.append(" </body>\n");
-            writer.append("</html>\n");
-            System.out.println("Files saved at " + url);
+            writer.append("</html>\n");            
         }        
+        System.out.println("Files saved at " + url);
     }
     
-    private static Set<Cell> genCellsFromTable(final Table table,
-                                               final URLS.UrlElem elem) {
+    public static Set<String> generateCells(final String url,
+                                            final File root) 
+                                                            throws IOException {        
+        if (url == null) {
+            throw new NullPointerException("url");
+        }
+        if (root == null) {
+            throw new NullPointerException("root");
+        }
+                        
+        final Set<String> ret = new TreeSet<>();
+        final URLS urls = new URLS();
+        final Set<URLS.UrlElem> set = urls.loadCsvFromHtml(new URL(url));
+        
+        System.out.println("\nTotal csv files found: " + set.size());
+
+        for (URLS.UrlElem elem : set) {            
+            final String[] page = urls.loadPageGet(elem.csv);
+            final String content = page[1];
+            final CSV_File csv = new CSV_File();
+            final Table table = csv.parse(content, CSV_SEPARATOR);
+            
+            System.out.println("Generating cells\n");
+            genCellsFromTable(table, elem, root, ret);
+        }
+        return ret;
+    }
+    
+    private static void genCellsFromTable(final Table table,
+                                          final URLS.UrlElem elem,
+                                          final File root,
+                                          final Set<String> urls) 
+                                                            throws IOException {
         assert table != null;
         assert elem != null;
+        assert root != null;
+        assert urls != null;
         
-        final Set<Cell> set = new HashSet<>();
         final List<List<String>> elems = table.getLines();
         final Iterator<List<String>> yit = elems.iterator(); 
         int idx = 1;
@@ -144,12 +150,10 @@ public class Cells {
                 cell.setValue(xit.next());
                 final Matcher mat = REFUSE_PAT.matcher(cell.getValue());
                 if (!mat.matches()) {
-                    set.add(cell);
+                    urls.add(saveToFile(cell, root));
                 }                
             }
         }
-                                                
-        return set;
     }
     
     private static String saveToFile(final Cell cell,
