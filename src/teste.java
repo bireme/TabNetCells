@@ -3,8 +3,10 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 /*
  * To change this template, choose Tools | Templates
@@ -16,7 +18,7 @@ import java.net.URL;
  * @author heitor
  */
 public class teste {
-     public static String excutePost(String targetURL, String urlParameters)
+     public static String executePost(String targetURL, String urlParameters)
   {
     URL url;
     HttpURLConnection connection = null;  
@@ -68,11 +70,20 @@ public class teste {
     }
   }
      
-     public static void main(final String[] args) {
-         final String targetURL = "http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/g01.def";
-         final String urlParameters = "Linha=Regi%E3o_%28capitais%29&Coluna=--N%E3o-Ativa--&Incremento=Preval%EAncia_diabete_melito&Arquivos=vigtel10.dbf&SRegi%E3o_%28capitais%29=TODAS_AS_CATEGORIAS__&SCapital=TODAS_AS_CATEGORIAS__&SSexo=TODAS_AS_CATEGORIAS__&SFaixa_et%E1ria=TODAS_AS_CATEGORIAS__&SEscolaridade=TODAS_AS_CATEGORIAS__&mostre=Mostra";
+     public static void main(final String[] args) throws UnsupportedEncodingException {
+         /*final String targetURL = "http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/g01.def";
+         //final String urlParameters = "Linha=Regi%E3o_%28capitais%29&Coluna=--N%E3o-Ativa--&Incremento=Preval%EAncia_diabete_melito&Arquivos=vigtel10.dbf&SRegi%E3o_%28capitais%29=TODAS_AS_CATEGORIAS__&SCapital=TODAS_AS_CATEGORIAS__&SSexo=TODAS_AS_CATEGORIAS__&SFaixa_et%E1ria=TODAS_AS_CATEGORIAS__&SEscolaridade=TODAS_AS_CATEGORIAS__&mostre=Mostra";
+         final String urlParameters = "Linha=Região_(capitais)&Coluna=--Não-Ativa--&Incremento=Prevalência_diabete_melito&Arquivos=vigtel10.dbf&SRegião(capitais)=TODAS_AS_CATEGORIAS__&SCapital=TODAS_AS_CATEGORIAS__&SSexo=TODAS_AS_CATEGORIAS__&SFaixa_etária=TODAS_AS_CATEGORIAS__&SEscolaridade=TODAS_AS_CATEGORIAS__&mostre=Mostra";
+         final String encodedParams = URLEncoder.encode(urlParameters, "ISO8859-1");
+         System.out.println(executePost(targetURL, encodedParams));
+         */
          
-         System.out.println(excutePost(targetURL, urlParameters));
+         final String targetURL = "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a16.def";
+         //final String targetURL = "http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/a16.def";
+         final String urlParameters = "Incremento=Razão_de_dependência_(jovens)&Arquivos=popc91.dbf&SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&Linha=Região&SRegião=TODAS_AS_CATEGORIAS__&Coluna=--Não-Ativa--&SCapital=TODAS_AS_CATEGORIAS__";
+         final String encodedParams = URLEncoder.encode(urlParameters, "ISO8859-1");
+         
+         System.out.println(executePost(targetURL, encodedParams));
      }
     
 }

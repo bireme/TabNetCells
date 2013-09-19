@@ -24,6 +24,8 @@ package br.bireme.tb;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.AbstractMap;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -40,7 +42,11 @@ public class DEF_File {
     private static final Pattern FORM_PATTERN = Pattern.compile(
                                    "(?i)<FORM.+?ACTION=\\\"([^\\\"]+)\\\".*?>");
     private static final Pattern SELECT_PATTERN = Pattern.compile(
-                       "(?i)(?s)<SELECT.+?ID=\"(\\w{1,3})\".*?>(.+?)</SELECT>");
+                                      "(?i)(?s)<SELECT ([^>]+)>(.+?)</SELECT>");
+    private static final Pattern ID_PATTERN = Pattern.compile(
+                                                         "(?i)ID=\"([^\"]+)\"");
+    private static final Pattern NAME_PATTERN = Pattern.compile(
+                                                       "(?i)NAME=\"([^\"]+)\"");
     private static final Pattern OPTION_PATTERN = Pattern.compile(
                                         "(?i)<OPTION.+?VALUE=\"([^\"]+)\".*?>");
     
@@ -50,7 +56,8 @@ public class DEF_File {
         }
         final Set<String[]> set = new HashSet<>();
         final String content = new URLS().loadPageGet(url)[1];
-        final Map<String,Set<String>> selectOpts = getSelectOptions(content);
+        final Map<String,AbstractMap.SimpleEntry<String,Set<String>>>
+                                         selectOpts = getSelectOptions(content);
         final Set<Map<String,String>> postOpts = generatePostOptions(selectOpts);
         final String target = getFormTarget(content).trim();
         final String tgt = (target.endsWith("/")) 
@@ -67,9 +74,8 @@ public class DEF_File {
                     builder.append("&");
                 }                
                 builder.append(entry.getKey());
-                builder.append("=\"");
+                builder.append("=");
                 builder.append(entry.getValue());
-                builder.append("\"");
             }
                         
             set.add(new String[] {durl.toString(), builder.toString()});
@@ -78,29 +84,42 @@ public class DEF_File {
         return set;
     }
 
-    private static Map<String,Set<String>> getSelectOptions(
-                                      final String content) throws IOException {
+    private static Map<String,AbstractMap.SimpleEntry<String,Set<String>>>
+                     getSelectOptions(final String content) throws IOException {
         assert content != null;
 
-        final Map<String,Set<String>> map = new HashMap<>();
-        final Matcher mat = SELECT_PATTERN.matcher(content);
+        final Map<String,AbstractMap.SimpleEntry<String,Set<String>>> map = 
+                                                                new HashMap<>();
+        final Matcher matSel = SELECT_PATTERN.matcher(content);        
         
-        while (mat.find()) {
-            final String selectId = mat.group(1);
-            final String selectContent = mat.group(2);
+        while (matSel.find()) {
+            final String selAtt = matSel.group(1);
+            final Matcher matId = ID_PATTERN.matcher(selAtt);
+            final Matcher matName = NAME_PATTERN.matcher(selAtt);
+            if (!matId.find()) {
+                throw new IOException("id attr not found: [" + selAtt + "]");
+            }
+            final String selectId = matId.group(1);
+            if (!matName.find()) {
+                throw new IOException("name attr not found: [" + selAtt + "]");
+            }
+            final String selectName = matName.group(1);
+            final String selectContent = matSel.group(2);
             final Matcher mat2 = OPTION_PATTERN.matcher(selectContent);
             final Set<String> options = new HashSet<>();
             
             while (mat2.find()) {
                 options.add(mat2.group(1));
             }
-            map.put(selectId, options);
+            map.put(selectId, 
+                            new AbstractMap.SimpleEntry<>(selectName, options));
         }
         return map;
     }
     
     private static Set<Map<String,String>> generatePostOptions(
-                                       Map<String,Set<String>> selectOptions) {
+        Map<String,AbstractMap.SimpleEntry<String,Set<String>>> selectOptions) {
+        
         assert selectOptions != null;
         
         final String REGION_AND_FEDERATION_UNIT = 
@@ -110,29 +129,38 @@ public class DEF_File {
         final String ALL_CATEGORIES = "TODAS_AS_CATEGORIAS__";        
         
         final Set<Map<String,String>> set = new HashSet<>();
-        final Set<String> line = selectOptions.get("L");
-        final Set<String> content = selectOptions.get("I");
-        final Set<String> time = selectOptions.get("A");
+        final AbstractMap.SimpleEntry<String,Set<String>> 
+                                                  line = selectOptions.get("L");
+        final AbstractMap.SimpleEntry<String,Set<String>> 
+                                               content = selectOptions.get("I");
+        final AbstractMap.SimpleEntry<String,Set<String>> 
+                                                  time = selectOptions.get("A");
+        final String lineKey = line.getKey();
+        final String colummKey = selectOptions.get("C").getKey();
+        final String contentKey = content.getKey();
+        final String timeKey = time.getKey();
         
-        line.remove(REGION_AND_FEDERATION_UNIT);
-        line.remove(YEAR);
+        line.getValue().remove(REGION_AND_FEDERATION_UNIT);
+        line.getValue().remove(YEAR);
         
         selectOptions.remove("L");
         selectOptions.remove("C");
         selectOptions.remove("I");
         selectOptions.remove("A");
-        final Set<String> others = selectOptions.keySet();
+        final Collection<AbstractMap.SimpleEntry<String,Set<String>>> 
+                                                others = selectOptions.values();
         
-        for (String lineElem : line) {            
-            for (String contentElem : content) {
-                for (String timeElem : time) {
+        for (String lineElem : line.getValue()) {            
+            for (String contentElem : content.getValue()) {
+                for (String timeElem : time.getValue()) {
                     final Map<String,String> map = new HashMap<>();
-                    map.put("L", lineElem);
-                    map.put("C", NOT_ACTIVE);
-                    map.put("I", contentElem);
-                    map.put("A", timeElem);
-                    for (String otherElem : others) {
-                        map.put(otherElem, ALL_CATEGORIES);
+                    map.put(lineKey, lineElem);
+                    map.put(colummKey, NOT_ACTIVE);
+                    map.put(contentKey, contentElem);
+                    map.put(timeKey, timeElem);
+                    for (AbstractMap.SimpleEntry<String,Set<String>> otherElem 
+                                                                     : others) {
+                        map.put(otherElem.getKey(), ALL_CATEGORIES);
                     }
                     set.add(map);
                 }                
