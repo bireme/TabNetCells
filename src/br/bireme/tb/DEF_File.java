@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,8 +50,9 @@ public class DEF_File {
                                                        "(?i)NAME=\"([^\"]+)\"");
     private static final Pattern OPTION_PATTERN = Pattern.compile(
                                         "(?i)<OPTION.+?VALUE=\"([^\"]+)\".*?>");
-    
-    public static Set<String[]> generateDefUrls(final URL url) throws IOException {
+
+    public static Set<String[]> generateDefUrls(final URL url) 
+                                                            throws IOException {
         if (url == null) {
             throw new NullPointerException("url");
         }
@@ -60,9 +62,9 @@ public class DEF_File {
                                          selectOpts = getSelectOptions(content);
         final Set<Map<String,String>> postOpts = generatePostOptions(selectOpts);
         final String target = getFormTarget(content).trim();
-        final String tgt = (target.endsWith("/")) 
+        final String tgt = (target.endsWith("/"))
                               ? target.substring(0, target.length()-1) : target;
-        final URL durl = URLS.withDomain(url, tgt);       
+        final URL durl = URLS.withDomain(url, tgt);
 
         for (Map<String,String> map : postOpts) {
             final StringBuilder builder = new StringBuilder();
@@ -72,15 +74,15 @@ public class DEF_File {
                     first = false;
                 } else {
                     builder.append("&");
-                }                
+                }
                 builder.append(entry.getKey());
                 builder.append("=");
                 builder.append(entry.getValue());
             }
-                        
+
             set.add(new String[] {durl.toString(), builder.toString()});
         }
-        
+
         return set;
     }
 
@@ -88,10 +90,10 @@ public class DEF_File {
                      getSelectOptions(final String content) throws IOException {
         assert content != null;
 
-        final Map<String,AbstractMap.SimpleEntry<String,Set<String>>> map = 
+        final Map<String,AbstractMap.SimpleEntry<String,Set<String>>> map =
                                                                 new HashMap<>();
-        final Matcher matSel = SELECT_PATTERN.matcher(content);        
-        
+        final Matcher matSel = SELECT_PATTERN.matcher(content);
+
         while (matSel.find()) {
             final String selAtt = matSel.group(1);
             final Matcher matId = ID_PATTERN.matcher(selAtt);
@@ -107,50 +109,50 @@ public class DEF_File {
             final String selectContent = matSel.group(2);
             final Matcher mat2 = OPTION_PATTERN.matcher(selectContent);
             final Set<String> options = new HashSet<>();
-            
+
             while (mat2.find()) {
                 options.add(mat2.group(1));
             }
-            map.put(selectId, 
+            map.put(selectId,
                             new AbstractMap.SimpleEntry<>(selectName, options));
         }
         return map;
     }
-    
+
     private static Set<Map<String,String>> generatePostOptions(
         Map<String,AbstractMap.SimpleEntry<String,Set<String>>> selectOptions) {
-        
+
         assert selectOptions != null;
-        
-        final String REGION_AND_FEDERATION_UNIT = 
+
+        final String REGION_AND_FEDERATION_UNIT =
                                                 "Região_e_Unidade_da_Federação";
         final String YEAR = "Ano";
         final String NOT_ACTIVE = "--Não-Ativa--";
-        final String ALL_CATEGORIES = "TODAS_AS_CATEGORIAS__";        
-        
+        final String ALL_CATEGORIES = "TODAS_AS_CATEGORIAS__";
+
         final Set<Map<String,String>> set = new HashSet<>();
-        final AbstractMap.SimpleEntry<String,Set<String>> 
+        final AbstractMap.SimpleEntry<String,Set<String>>
                                                   line = selectOptions.get("L");
-        final AbstractMap.SimpleEntry<String,Set<String>> 
+        final AbstractMap.SimpleEntry<String,Set<String>>
                                                content = selectOptions.get("I");
-        final AbstractMap.SimpleEntry<String,Set<String>> 
-                                                  time = selectOptions.get("A");
+        final AbstractMap.SimpleEntry<String,Set<String>>
+                                time = filterDates(selectOptions.get("A"), 3);
         final String lineKey = line.getKey();
         final String colummKey = selectOptions.get("C").getKey();
         final String contentKey = content.getKey();
         final String timeKey = time.getKey();
-        
+
         line.getValue().remove(REGION_AND_FEDERATION_UNIT);
         line.getValue().remove(YEAR);
-        
+
         selectOptions.remove("L");
         selectOptions.remove("C");
         selectOptions.remove("I");
         selectOptions.remove("A");
-        final Collection<AbstractMap.SimpleEntry<String,Set<String>>> 
+        final Collection<AbstractMap.SimpleEntry<String,Set<String>>>
                                                 others = selectOptions.values();
-        
-        for (String lineElem : line.getValue()) {            
+
+        for (String lineElem : line.getValue()) {
             for (String contentElem : content.getValue()) {
                 for (String timeElem : time.getValue()) {
                     final Map<String,String> map = new HashMap<>();
@@ -158,26 +160,100 @@ public class DEF_File {
                     map.put(colummKey, NOT_ACTIVE);
                     map.put(contentKey, contentElem);
                     map.put(timeKey, timeElem);
-                    for (AbstractMap.SimpleEntry<String,Set<String>> otherElem 
+                    for (AbstractMap.SimpleEntry<String,Set<String>> otherElem
                                                                      : others) {
                         map.put(otherElem.getKey(), ALL_CATEGORIES);
                     }
                     set.add(map);
-                }                
+                }
             }
         }
-        
+
         return set;
     }
-    
-    private static String getFormTarget(final String content) 
+
+    private static String getFormTarget(final String content)
                                                             throws IOException {
         assert content != null;
-        
-        final Matcher mat = FORM_PATTERN.matcher(content);        
+
+        final Matcher mat = FORM_PATTERN.matcher(content);
         if (!mat.find()) {
             throw new IOException("form target (url) not found");
         }
         return mat.group(1);
-    }                
+    }
+    
+    private static AbstractMap.SimpleEntry<String,Set<String>> filterDates(
+                        final AbstractMap.SimpleEntry<String,Set<String>> dates,             
+                        final int max) {
+    
+        assert dates != null;
+        assert max >= 1;
+        
+        final Set<String> in = dates.getValue();
+        final Matcher mat9x = Pattern.compile("[^\\d]+9\\d+\\.\\w+").matcher("");
+        final Matcher mat0x = Pattern.compile("[^\\d]+0\\d+\\.\\w+").matcher("");
+        final Matcher mat1x = Pattern.compile("[^\\d]+1\\d+\\.\\w+").matcher("");
+        final Matcher mat2x = Pattern.compile("[^\\d]+2\\d+\\.\\w+").matcher("");
+        final TreeSet<String> set9x = new TreeSet<>();
+        final TreeSet<String> set0x = new TreeSet<>();
+        final TreeSet<String> set1x = new TreeSet<>();
+        final TreeSet<String> set2x = new TreeSet<>();
+        
+        for (String date : in) {
+            mat9x.reset(date);
+            if (mat9x.matches()) {
+                set9x.add(date);
+            } else {
+                mat0x.reset(date);                         
+                if (mat0x.matches()) {
+                    set0x.add(date);
+                } else {
+                    mat1x.reset(date);
+                    if (mat1x.matches()) {
+                        set1x.add(date);
+                    } else {
+                        mat2x.reset(date);
+                        if (mat2x.matches()) {
+                            set2x.add(date);
+                        }
+                    }
+                }
+            }
+        }
+        
+        final Set<String> setDates = new HashSet<>();
+        int remaining = max;
+        
+        for (String x2 : set2x.descendingSet()) {
+            if (remaining == 0) {
+                break;
+            }
+            setDates.add(x2);
+            remaining--;
+        }
+        for (String x1 : set1x.descendingSet()) {
+            if (remaining == 0) {
+                break;
+            }
+            setDates.add(x1);
+            remaining--;
+        }
+        for (String x0 : set0x.descendingSet()) {
+            if (remaining == 0) {
+                break;
+            }
+            setDates.add(x0);
+            remaining--;
+        }
+        for (String x9 : set9x.descendingSet()) {
+            if (remaining == 0) {
+                break;
+            }
+            setDates.add(x9);
+            remaining--;
+        }
+        
+        return new AbstractMap.SimpleEntry<>(dates.getKey(), setDates);
+    }
 }

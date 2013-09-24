@@ -32,7 +32,7 @@ import java.util.List;
 public class Table {
     private String title;
     private String subtitle;
-    private List<String> scope;   
+    private List<String> scope;
     private String rowHeader;
     private List<List<String>> header;
     private List<String> row;
@@ -80,7 +80,7 @@ public class Table {
     public void setRow(final List<String> row) {
         this.row = row;
     }
-    
+
     public List<List<String>> getHeader() {
         return header;
     }
@@ -136,12 +136,12 @@ public class Table {
                 builder.append("\t");
                 builder.append(line);
             }
-        }                        
-        builder.append("\nHeader:\n");        
+        }
+        builder.append("\nHeader:\n");
         for (List<String> hrow : header) {
             boolean first = true;
             builder.append("(");
-            for (String line : hrow) {                
+            for (String line : hrow) {
                 if (first) {
                     first = false;
                 } else {
@@ -149,10 +149,10 @@ public class Table {
                 }
                 builder.append(line);
             }
-            builder.append(")\t");            
+            builder.append(")\t");
         }
 
-        builder.append("\nrowHeader:\n\t");            
+        builder.append("\nrowHeader:\n\t");
         builder.append(rowHeader);
 
         builder.append("\nRow:\n");
@@ -190,5 +190,5 @@ public class Table {
             }
         }
         return builder.toString();
-    }    
+    }
 }

@@ -38,10 +38,10 @@ public class Cell {
     private String row;
     private String value;
     private List<String> sources;
-    private List<String> labels;   
+    private List<String> labels;
     private List<String> notes;
-    private URLS.UrlElem elem; 
-    
+    private URLS.UrlElem elem;
+
     public int getIdx() {
         return idx;
     }
@@ -49,7 +49,7 @@ public class Cell {
     public void setIdx(int idx) {
         this.idx = idx;
     }
-    
+
     public String getTitle() {
         return title;
     }
@@ -89,7 +89,7 @@ public class Cell {
     public void setRow(final String row) {
         this.row = row;
     }
-    
+
     public String getValue() {
         return value;
     }
@@ -121,7 +121,7 @@ public class Cell {
     public void setNotes(final List<String> notes) {
         this.notes = notes;
     }
-    
+
     public URLS.UrlElem getElem() {
         return elem;
     }
@@ -129,7 +129,7 @@ public class Cell {
     public void setElem(final URLS.UrlElem elem) {
         this.elem = elem;
     }
-    
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
@@ -145,7 +145,7 @@ public class Cell {
                 builder.append("\t");
                 builder.append(line);
             }
-        }                        
+        }
         builder.append("\nHeader:");
         for (String line : header) {
             builder.append("\n\t");
@@ -193,22 +193,22 @@ public class Cell {
                 builder.append(elem.qualifRec);
             }
         }
-        return builder.toString();        
+        return builder.toString();
     }
-    
+
     public String toHtml() {
         final StringBuilder builder = new StringBuilder();
-        
-        builder.append("<!DOCTYPE html>\n");        
+
+        builder.append("<!DOCTYPE html>\n");
         builder.append("<html>\n");
-        
+
         builder.append("<head>\n");
         builder.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
         builder.append("</head>\n");
-        
+
         builder.append("<body>\n");
         builder.append("<h1>\n");
-        
+
         builder.append(title);
         if (!subtitle.isEmpty()) {
             builder.append("<h2>\n");
@@ -217,13 +217,13 @@ public class Cell {
         }
         if (!scope.isEmpty()) {
             builder.append("<h3>\n");
-            for (String line : scope) {                
+            for (String line : scope) {
                 builder.append(line);
                 builder.append("<br/>");
             }
             builder.append("</h3>\n");
         }
-        
+
         builder.append("<p><b>Célula:</b><br/>(");
         boolean first = true;
         for (String line : header) {
@@ -231,13 +231,13 @@ public class Cell {
                 first = false;
             } else {
                 builder.append("| ");
-            }                        
+            }
             builder.append(line);
         }
-        
+
         builder.append("; ");
         builder.append(row);
-        
+
         builder.append("; ");
         builder.append(value);
         builder.append(")");
@@ -247,7 +247,7 @@ public class Cell {
             builder.append("<p><b>Fonte(s):</b>\n");
             for (String line : sources) {
                 builder.append("<br/>");
-                builder.append(line);                
+                builder.append(line);
             }
             builder.append("</p>\n");
         }
@@ -255,7 +255,7 @@ public class Cell {
             builder.append("<p><b>Label(s):</b>\n");
             for (String line : labels) {
                 builder.append("<br/>");
-                builder.append(line);                
+                builder.append(line);
             }
             builder.append("</p>\n");
         }
@@ -263,7 +263,7 @@ public class Cell {
             builder.append("<p><b>Nota(s):</b>");
             for (String line : notes) {
                 builder.append("<br/>");
-                builder.append(line);                
+                builder.append(line);
             }
             builder.append("</p>\n");
         }
@@ -293,10 +293,10 @@ public class Cell {
                 builder.append("</a>\n</p>\n");
             }
         }
-        
+
         builder.append("</body>");
         builder.append("</html>");
-        
-        return builder.toString();        
+
+        return builder.toString();
     }
 }
