@@ -1,4 +1,5 @@
 
+import br.bireme.tb.URLS;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
@@ -31,8 +32,9 @@ public class teste {
            "application/x-www-form-urlencoded");
 
       connection.setRequestProperty("Content-Length", "" +
-               Integer.toString(urlParameters.getBytes().length));
+               Integer.toString(urlParameters.getBytes(URLS.DEFAULT_ENCODING).length));
       connection.setRequestProperty("Content-Language", "en-US");
+      //connection.setRequestProperty("Accept-Charset", URLS.DEFAULT_ENCODING);
 
       connection.setUseCaches (false);
       connection.setDoInput(true);
@@ -78,9 +80,11 @@ public class teste {
          System.out.println(executePost(targetURL, encodedParams));
          */
 
-         final String targetURL = "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a16.def";
+         final String targetURL = "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/c06.def";
          //final String targetURL = "http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/a16.def";
-         final String urlParameters = "Incremento=Razão_de_dependência_(jovens)&Arquivos=popc91.dbf&SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&Linha=Região&SRegião=TODAS_AS_CATEGORIAS__&Coluna=--Não-Ativa--&SCapital=TODAS_AS_CATEGORIAS__";
+         final String urlParameters = //"Incremento=Proporção_de_óbitos_(%)&Arquivos=obim09.dbf&SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&Linha=Região_Metropolitana&SRegião=TODAS_AS_CATEGORIAS__&Coluna=--Não-Ativa--&SCapital=TODAS_AS_CATEGORIAS__";
+                                      //"Incremento=Proporção_de_óbitos_(%)&Arquivos=obim10.dbf&SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&Linha=Unidade_da_Federação&SRegião=TODAS_AS_CATEGORIAS__&Coluna=--Não-Ativa--&SCapital=TODAS_AS_CATEGORIAS__";
+                                       "Incremento=Proporção_de_óbitos_(%)&Arquivos=obim08.dbf&SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&Linha=Capital&SRegião=TODAS_AS_CATEGORIAS__&Coluna=--Não-Ativa--&SCapital=TODAS_AS_CATEGORIAS__";
          final String encodedParams = URLEncoder.encode(urlParameters, "ISO8859-1");
 
          System.out.println(executePost(targetURL, encodedParams));

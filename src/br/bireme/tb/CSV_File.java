@@ -312,10 +312,9 @@ public class CSV_File {
                 }
                 first = false;
             } else {
-                if (content.startsWith("Nota")) {
-                    break;
+                if (!content.isEmpty()) {                    
+                    notes.add(content);
                 }
-                notes.add(content);
             }
             lines.remove();
         }

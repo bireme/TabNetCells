@@ -23,6 +23,7 @@
 package br.bireme.tb;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -208,8 +209,9 @@ public class Cell {
 
         builder.append("<body>\n");
         builder.append("<h1>\n");
-
         builder.append(title);
+        builder.append("</h1>\n");
+        
         if (!subtitle.isEmpty()) {
             builder.append("<h2>\n");
             builder.append(subtitle);
@@ -219,7 +221,7 @@ public class Cell {
             builder.append("<h3>\n");
             for (String line : scope) {
                 builder.append(line);
-                builder.append("<br/>");
+                builder.append("<br/>\n");
             }
             builder.append("</h3>\n");
         }
@@ -268,14 +270,14 @@ public class Cell {
             builder.append("</p>\n");
         }
         if (elem != null) {
-            if (elem.csv != null) {
+            /*if (elem.csv != null) {
                 builder.append("<p><b>Url da CVS:</b><br/>\n");
                 builder.append("<a href=\"");
                 builder.append(elem.csv);
                 builder.append("\">");
                 builder.append(elem.csv);
                 builder.append("</a>\n</p>\n");
-            }
+            }*/
             if (elem.father != null) {
                 builder.append("<p><b>Url da tabela:</b><br/>\n");
                 builder.append("<a href=\"");
@@ -283,6 +285,17 @@ public class Cell {
                 builder.append("\">");
                 builder.append(elem.father);
                 builder.append("</a>\n</p>\n");
+            }
+            if (elem.tableOptions != null) {
+                builder.append("<p><b>Opções da tabela:</b><br/>\n");
+                for (Map.Entry<String,String> entry : 
+                                                 elem.tableOptions.entrySet()) {
+                    builder.append(entry.getKey());
+                    builder.append(": ");
+                    builder.append(entry.getValue());
+                    builder.append("<br/>\n");
+                }
+                builder.append("</p>\n");            
             }
             if (elem.qualifRec != null) {
                 builder.append("<p><b>Url da Ficha de Qualificação:</b><br/>\n");

@@ -23,13 +23,17 @@
 package br.bireme.tb;
 
 import br.bireme.utils.TimeString;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -115,44 +119,46 @@ public class Cells {
             throw new NullPointerException("root");
         }
 
-        final Set<String> ret = new TreeSet<>();
+        Set<String> ret = null;
         final URLS urls = new URLS();
         final Set<URLS.UrlElem> set = urls.loadCsvFromHtml(new URL(url));
         
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
                new FileOutputStream("csvfiles.txt"), URLS.DEFAULT_ENCODING))) {
-            System.out.println("\nTotal csv files found: " + set.size());
-            System.out.println("Generating cells\n");
-            
             for (URLS.UrlElem elem : set) {
-                try {
-                    final String[] page = urls.loadPageGet(elem.csv);
-                    final String content = page[1];
-                    final CSV_File csv = new CSV_File();
-                    final Table table = csv.parse(content, CSV_SEPARATOR);
-     
-                    writer.append(elem.csv.toString());
-                    writer.newLine();
-                    genCellsFromTable(table, elem, root, ret);
-                } catch (Exception ex) {
-                    Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
-                           .log(Level.SEVERE, "skipping file: " + elem.csv, ex);
-                }
+                writer.append(elem.csv.toString());
+                writer.newLine();
             }
+        }
+            
+        System.out.println("\nTotal csv files found: " + set.size());
+        System.out.println("Generating cells\n");
+
+        for (URLS.UrlElem elem : set) {
+            try {
+                final String[] page = urls.loadPageGet(elem.csv);
+                final String content = page[1];
+                final CSV_File csv = new CSV_File();
+                final Table table = csv.parse(content, CSV_SEPARATOR);
+
+                ret = genCellsFromTable(table, elem, root);
+            } catch (Exception ex) {
+                Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
+                       .log(Level.SEVERE, "skipping file: " + elem.csv, ex);
+            }        
         }
         
         return ret;
     }
 
-    private static void genCellsFromTable(final Table table,
-                                          final URLS.UrlElem elem,
-                                          final File root,
-                                          final Set<String> urls) {
+    private static Set<String> genCellsFromTable(final Table table,
+                                                 final URLS.UrlElem elem,
+                                                 final File root) {
         assert table != null;
         assert elem != null;
         assert root != null;
-        assert urls != null;
-
+        
+        final Set<String> urls = new TreeSet<>();
         final List<List<String>> elems = table.getLines();
         final Iterator<List<String>> yit = elems.iterator();
         int idx = 1;
@@ -178,12 +184,12 @@ public class Cells {
                         urls.add(saveToFile(cell, root));
                     } catch (IOException ioe) {
                         Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
-                                   .log(Level.SEVERE, "could not save file:" 
-                                                                   + root, ioe);
+                               .log(Level.SEVERE, "Could not save file.", ioe);
                     }
                 }
             }
         }
+        return urls;
     }
 
     private static String saveToFile(final Cell cell,
@@ -228,15 +234,12 @@ public class Cells {
         File file = new File(path, fname);
 //System.out.println("writing file: [" + file.getCanonicalPath() + "]");
         if (file.exists()) {  // existem repetições de arquivos em cel diferentes
-            throw new IOException(
-                "Saving to file error. Duplicated file: [" 
-                + file.getAbsolutePath() + "] Cell: [" + cell.toString() + "]");
-        } else {
-            try (BufferedWriter writer = new BufferedWriter(
-                                           new FileWriter(file))) {
-                writer.append(cell.toHtml());
-            }
+            file = renameFile(path, fname);
         }
+        try (BufferedWriter writer = new BufferedWriter(
+                                       new FileWriter(file))) {
+            writer.append(cell.toHtml());
+        }        
     }
 
     private static boolean deleteFile(final File file) {
@@ -251,7 +254,74 @@ public class Cells {
         }
         return status && file.delete();
     }
+    
+    private static File renameFile(final File path,
+                                   final String fname) throws IOException {
+        assert path != null;
+        assert fname != null;
+        
+        final int dotIndex = fname.lastIndexOf('.');
+        final String prefix = (dotIndex == -1) ? fname 
+                                               : fname.substring(0, dotIndex);
+        final String suffix = (dotIndex == -1) ? "" : fname.substring(dotIndex);
+        final Pattern pat = Pattern.compile(prefix + "\\((\\d+)\\)" + suffix);
+        final Matcher mat = pat.matcher("");
+        final String[] fNames = path.list();
+        int last = 1;
+        
+        for (String name : fNames) {
+            mat.reset(name);
+            if (mat.matches()) {
+                final int idx = Integer.parseInt(mat.group(1));
+                if (last < idx) {
+                    last = idx;
+                }
+            }
+        }
+        final String nName = prefix + "(" + last + ")" + suffix;
+            
+        return new File(path, nName);
+    }
 
+    private static void loadCsvFromFile() throws IOException {
+        final File root = new File("TabNetCells");
+        final URLS urls = new URLS();
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(
+                  new FileInputStream("csvfiles.txt"), URLS.DEFAULT_ENCODING));
+        final Set<URLS.UrlElem> set = new HashSet<>();
+        
+        while (true) {
+            final String line = reader.readLine();
+            if (line == null) {
+                break;
+            }
+            final URLS.UrlElem ue = (urls. new UrlElem());
+            ue.csv = new URL(line);
+            ue.father = new URL(line);
+            ue.qualifRec = new URL(line + "(X)");
+            set.add(ue);
+        }
+        
+        for (URLS.UrlElem elem : set) {
+            try {
+System.out.println("DEBUG - loadPageGet[" + elem.csv + "] - inicio");
+                final String[] page = urls.loadPageGet(elem.csv);
+System.out.println("DEBUG - loadPageGet - fim");                
+                final String content = page[1];
+                final CSV_File csv = new CSV_File();
+System.out.println("DEBUG - csv parse - inicio");                
+                final Table table = csv.parse(content, CSV_SEPARATOR);
+System.out.println("DEBUG - csv parse - fim");                
+System.out.println("DEBUG - genCellsFromTable - inicio");
+                genCellsFromTable(table, elem, root);
+System.out.println("DEBUG - genCellsFromTable - fim");                
+            } catch (Exception ex) {
+                Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
+                       .log(Level.SEVERE, "skipping file: " + elem.csv, ex);
+            }        
+        }
+    }
+    
     public static void main(final String[] args) throws IOException {
         final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
         final FileHandler fh = new FileHandler("TabNetCells.log", false);  
@@ -262,6 +332,8 @@ public class Cells {
 
         time.start();
         generateFileStructure(URL, "TabNetCells");
+        //loadCsvFromFile();
+        
         System.out.println("Total time: " + time.getTime());
     }
 }
