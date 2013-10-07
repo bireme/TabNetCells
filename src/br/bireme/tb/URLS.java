@@ -32,6 +32,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -74,14 +75,14 @@ public class URLS {
         
         @Override
         public int compareTo(final UrlElem other) {
-            final String url = father.toString();
+            final String url = csv.toString();
             final int ret;
                                                 
             if (url == null) {                
                 ret = ((other == null) || (other.father == null)) ? 0 : -1;
             } else {
                 ret = (other == null) ? +1 
-                                      : url.compareTo(other.father.toString());
+                                      : url.compareTo(other.csv.toString());
             }
             return ret;
         }
@@ -91,21 +92,18 @@ public class URLS {
         final URL html;
         final String postParam;
         final Map<String,String> tableOptions;
-        final int level;
         final Set<URL> history;
         final CountDownLatch latch;
-        Set<UrlElem> result;
+        UrlElem result;
 
         MultiDefLoad(final URL html,
                      final String postParam,
                      final Map<String,String> tableOptions,
-                     final int level,
                      final Set<URL> history,
                      final CountDownLatch latch) {
             this.html = html;
             this.postParam = postParam;
             this.tableOptions = tableOptions;
-            this.level = level;
             this.history = history;
             this.latch = latch;
             result = null;
@@ -114,17 +112,25 @@ public class URLS {
         @Override
         public void run() {
             try {
-                result = loadCsvFromHtml(html, postParam, tableOptions, 
-                                                                level, history);
+                final Set<UrlElem> csv = loadCsvFromHtml(html, postParam, 
+                                              tableOptions, MAX_LEVEL, history);
+                if (csv.size() == 1) {
+                    result = csv.iterator().next();
+                } else {
+                    Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, 
+                            "CSV #. Skipping loadCsvFromHtml file: [" + html 
+                                             + "] params: [" + postParam + "]");
+                    result = null;
+                }
             } catch (IOException ex) {
-                Logger.getLogger(URLS.class.getName()).log(Level.SEVERE, 
-                                   "skipping loadCsvFromHtml file: [" + html 
+                Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, 
+                                   "Skipping loadCsvFromHtml file: [" + html 
                                          + "] params: [" + postParam + "]", ex);
             }
             latch.countDown();
         }
 
-        Set<UrlElem> getResult() {
+        UrlElem getResult() {
             return result;
         }
     }
@@ -150,6 +156,11 @@ public class URLS {
 
         if ((postParam != null) || !history.contains(html)) {
             if (level <= MAX_LEVEL) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, null, ex);
+                }
                 final String[] page;
                 try {
                     page = (postParam == null) ? loadPageGet(html)
@@ -175,18 +186,31 @@ public class URLS {
                         set.add(elem);
                     }
                 } else {            // Did not find a cvs link in that page
+                    if (postParam != null) {
+                        String out = TESTE.executePost(html.toString(), postParam);
+                        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
+                                           .log(Level.SEVERE, 
+                                           "skipping loadCsvFromHtml/Def file: " 
+                                               + html + " params:" + postParam);                        
+                        String out1 = TESTE.executePost(html.toString(), postParam);
+                        throw new IOException(
+                                            "CSV link not found into def page");
+                    }
                     final Set<URL> urls = getPageDefHtmlUrls(
                                             new URL(page[0]), content, history);
                     for (URL url : urls) {
                         try {
                             final String file = url.getFile();
+                            final Set<UrlElem> aux;
+                            
                             if (file.endsWith(".def")) {
-                                set.addAll(loadCsvFromDef(url, history));
+                                aux = loadCsvFromDef_0(url, history);
                             } else {
-                                set.addAll(loadCsvFromHtml(url, null, null, 
-                                                           level + 1, history));
+                                aux = loadCsvFromHtml(url, null, null, 
+                                                           level + 1, history);
                             }
-                        } catch (IOException ioe) {
+                            set.addAll(aux);
+                        } catch (IOException ioe) {                             
                             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
                                            .log(Level.SEVERE, 
                                            "skipping loadCsvFromHtml/Def file: " 
@@ -220,8 +244,15 @@ public class URLS {
 
         for (DEF_File.DefUrls url : urls) {
             try {
-                set.addAll(loadCsvFromHtml(new URL(url.url), url.postParams,
-                                           url.options, MAX_LEVEL, history));                
+                final Set<UrlElem> aux = loadCsvFromHtml(new URL(url.url), 
+                               url.postParams, url.options, MAX_LEVEL, history);
+                set.addAll(aux);  
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, null, ex);
+                }
+
             } catch (IOException ioe) {
                 Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
                     .log(Level.SEVERE, "skipping loadCsvFromHtml file: " 
@@ -264,7 +295,7 @@ public class URLS {
                 for (int idx = current; idx <= last; idx++) {
                     final DEF_File.DefUrls url = lurls.get(idx);
                     final MultiDefLoad mdl = new MultiDefLoad(new URL(url.url), 
-                        url.postParams, url.options, MAX_LEVEL, history, latch);
+                        url.postParams, url.options, history, latch);
                     mdl.start();
                     lst.add(mdl);
                 }
@@ -274,15 +305,21 @@ public class URLS {
                    throw new IOException(ie);
                 }
                 for (MultiDefLoad load : lst) {
-                    final Set<UrlElem> elemSet = load.getResult();
-                    if (elemSet != null) {
-                        set.addAll(elemSet);
+                    final UrlElem elem = load.getResult();
+                    if (elem != null) {
+System.out.println("father=" + elem.father + " params=" + elem.fatherParams + " csv=" + elem.csv);
+                        if (set.contains(elem)) {
+                            int x = 0;
+                        }
+                        set.add(elem);
                     }
                 }                                                
                 current += batchSize;
             }
         }
         System.out.println("> - OK");
+        
+        assert (urls.size() == set.size());
         
         return set;
     }
@@ -376,6 +413,7 @@ public class URLS {
         if (urlParameters == null) {
             throw new NullPointerException("urlParameters");
         }
+        final String encodedParams = URLEncoder.encode(urlParameters, DEFAULT_ENCODING);
 //System.out.print("loading page (POST): [" + url + "] params: " + urlParameters);
 //System.out.print("loading page (POST): [" + url + "]");
 
@@ -386,7 +424,7 @@ public class URLS {
         connection.setRequestProperty("Content-Type",
                                            "application/x-www-form-urlencoded");
         connection.setRequestProperty("Content-Length", "" +
-                             Integer.toString(urlParameters
+                             Integer.toString(encodedParams
                                     .getBytes().length));
                                     //.getBytes(DEFAULT_ENCODING).length));
         connection.setRequestProperty("Content-Language", "pt-BR");
@@ -395,7 +433,7 @@ public class URLS {
         connection.setDoOutput(true);
         try (DataOutputStream wr = new DataOutputStream(
                                                 connection.getOutputStream())) {
-            wr.write(urlParameters.getBytes(DEFAULT_ENCODING));
+            wr.write(encodedParams.getBytes(DEFAULT_ENCODING));
             //wr.writeBytes(urlParameters);
             wr.flush ();
             //wr.close();
@@ -488,6 +526,8 @@ public class URLS {
 
         }*/
 
+        final String url = 
+                "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?idb2011/a01.def";
         final Set<UrlElem> set = urls.loadCsvFromHtml(new URL(ROOT_URL));
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
                new FileOutputStream("csvfiles.txt"), URLS.DEFAULT_ENCODING))) {

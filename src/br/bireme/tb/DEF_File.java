@@ -116,7 +116,7 @@ public class DEF_File {
             }
             final DefUrls def = new DefUrls();
             def.url = durl.toString();
-            def.postParams = builder.toString();
+            def.postParams = builder.toString() + "&formato=table&mostre=Mostra";
             def.options = options;
             set.add(def);
         }
@@ -309,5 +309,15 @@ public class DEF_File {
         dates.options = options;
         
         return dates;
+    }
+    
+    public static void main(final String[] args) throws IOException {
+        final String url = 
+                "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?idb2011/a01.def";
+        final DEF_File def = new DEF_File();
+        
+        for (DefUrls urls: def.generateDefUrls(new URL(url))) {
+            System.out.println(urls.url + "[" + urls.postParams + "]");
+        }
     }
 }
