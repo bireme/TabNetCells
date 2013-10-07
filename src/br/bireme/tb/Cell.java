@@ -22,15 +22,22 @@
 
 package br.bireme.tb;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
  *
- * @author Heitor Barbieri
+ * @author Heitor Barbierisymbols = new DecimalFormatSymbols(new Locale("pt", "BR"))
+
  * date: 20130912
  */
 public class Cell {
+    static final NumberFormat NFMT = NumberFormat.getInstance(
+                                                        new Locale("pt", "BR"));
+    
     private int idx;
     private String title;
     private String subtitle;
@@ -96,7 +103,9 @@ public class Cell {
     }
 
     public void setValue(final String value) {
-        this.value = value;
+        final String nvalue = (value == null) ? null : 
+                                               value.replaceAll("( +|\\+)", "");
+        this.value = nvalue;
     }
 
     public List<String> getSources() {
@@ -134,50 +143,66 @@ public class Cell {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Title:\n\t");
-        builder.append(title);
-        if (!subtitle.isEmpty()) {
+        
+        if ((title != null) && (!title.isEmpty())) {
+            builder.append("Title:\n\t");
+            builder.append(title);
+        }
+        if ((subtitle != null) && (!subtitle.isEmpty())) {
             builder.append("\nSubtitle:\n\t");
             builder.append(subtitle);
         }
-        if (!scope.isEmpty()) {
+        if ((scope != null) && (!scope.isEmpty())) {
             builder.append("\nScope:\n");
             for (String line : scope) {
-                builder.append("\t");
-                builder.append(line);
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append("\t");
+                    builder.append(line);
+                }
             }
         }
-        builder.append("\nHeader:");
-        for (String line : header) {
-            builder.append("\n\t");
-            builder.append(line);
+        if ((header != null) && (!header.isEmpty())) {
+            builder.append("\nHeader:");
+            for (String line : header) {
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append("\n\t");
+                    builder.append(line);
+                }
+            }
         }
-
-        builder.append("\nRow:\n\t");
-        builder.append(row);
-
-        builder.append("\nValue:\t");
-        builder.append(value);
-
+        if ((row != null) && (!row.isEmpty())) {
+            builder.append("\nRow:\n\t");
+            builder.append(row);
+        }
+        if ((value != null) && (!value.isEmpty())) {
+            builder.append("\nValue:\t");
+            builder.append(value);
+        }
         if ((sources != null) && (!sources.isEmpty())) {
             builder.append("\nSource:");
             for (String line : sources) {
-                builder.append("\n\t");
-                builder.append(line);
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append("\n\t");
+                    builder.append(line);
+                }
             }
         }
         if ((labels != null) && (!labels.isEmpty())) {
             builder.append("\nLabel:");
             for (String line : labels) {
-                builder.append("\n\t");
-                builder.append(line);
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append("\n\t");
+                    builder.append(line);
+                }
             }
         }
         if ((notes != null) && (!notes.isEmpty())) {
             builder.append("\nNote:");
             for (String line : notes) {
-                builder.append("\n\t");
-                builder.append(line);
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append("\n\t");
+                    builder.append(line);
+                }
             }
         }
         if (elem != null) {
@@ -189,6 +214,16 @@ public class Cell {
                 builder.append("\nFather url:\n\t");
                 builder.append(elem.father);
             }
+            if (elem.tableOptions != null) {
+                builder.append("\nTable options:\n\t");
+                for (Map.Entry<String,String> entry : 
+                                                 elem.tableOptions.entrySet()) {
+                    builder.append("\n\t");
+                    builder.append(entry.getKey());
+                    builder.append(": ");
+                    builder.append(entry.getValue());
+                }
+            }
             if (elem.qualifRec != null) {
                 builder.append("\nQualification Record url:\n\t");
                 builder.append(elem.qualifRec);
@@ -197,7 +232,7 @@ public class Cell {
         return builder.toString();
     }
 
-    public String toHtml() {
+    public String toHtml() {        
         final StringBuilder builder = new StringBuilder();
 
         builder.append("<!DOCTYPE html>\n");
@@ -208,64 +243,84 @@ public class Cell {
         builder.append("</head>\n");
 
         builder.append("<body>\n");
-        builder.append("<h1>\n");
-        builder.append(title);
-        builder.append("</h1>\n");
         
-        if (!subtitle.isEmpty()) {
+        if ((title != null) && (!title.isEmpty())) {
+            builder.append("<h1>\n");
+            builder.append(title);
+            builder.append("</h1>\n");
+        }
+        if ((subtitle != null) && (!subtitle.isEmpty())) {
             builder.append("<h2>\n");
             builder.append(subtitle);
             builder.append("</h2>\n");
         }
-        if (!scope.isEmpty()) {
+        if ((scope != null) && (!scope.isEmpty())) {
             builder.append("<h3>\n");
             for (String line : scope) {
-                builder.append(line);
-                builder.append("<br/>\n");
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append(line);
+                    builder.append("<br/>\n");
+                }
             }
             builder.append("</h3>\n");
         }
 
         builder.append("<p><b>Célula:</b><br/>(");
         boolean first = true;
-        for (String line : header) {
-            if (first) {
-                first = false;
-            } else {
-                builder.append("| ");
+        if ((header != null) && (!header.isEmpty())) {
+            for (String line : header) {
+                if ((line != null) && (!line.isEmpty())) {
+                    if (first) {
+                        first = false;
+                    } else {
+                        builder.append("| ");
+                    }
+                    builder.append(line);
+                }
             }
-            builder.append(line);
         }
-
         builder.append("; ");
-        builder.append(row);
-
+        if ((row != null) && (!row.isEmpty())) {
+            builder.append(row);
+        }
         builder.append("; ");
-        builder.append(value);
+        if ((value != null) && (!value.isEmpty())) {
+            try {
+                builder.append(NFMT.format(NFMT.parse(value).floatValue()));
+            } catch (ParseException ex) {
+                builder.append(value);
+            }
+        }
         builder.append(")");
         builder.append("</p>\n");
 
         if ((sources != null) && (!sources.isEmpty())) {
             builder.append("<p><b>Fonte(s):</b>\n");
             for (String line : sources) {
-                builder.append("<br/>");
-                builder.append(line);
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append("<br/>");
+                    builder.append(line);
+                }
             }
             builder.append("</p>\n");
         }
         if ((labels != null) && (!labels.isEmpty())) {
-            builder.append("<p><b>Label(s):</b>\n");
+            builder.append("<p><b>Legenda(s):</b>\n");
             for (String line : labels) {
-                builder.append("<br/>");
-                builder.append(line);
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append("<br/>");
+                    builder.append(line);
+                }
             }
             builder.append("</p>\n");
         }
         if ((notes != null) && (!notes.isEmpty())) {
             builder.append("<p><b>Nota(s):</b>");
             for (String line : notes) {
-                builder.append("<br/>");
-                builder.append(line);
+                if ((line != null) && (!line.isEmpty())) {
+                    builder.append("<br/>");
+                    builder.append(line);
+                }
             }
             builder.append("</p>\n");
         }

@@ -116,8 +116,12 @@ public class CSV_File {
         if (lines.isEmpty()) {
             throw new IOException("null subtitle");
         }
-        final String[] line = lines.remove();
-        table.setSubtitle(line[0].trim());
+        final String[] line = lines.peek();
+        
+        if (!line[0].startsWith("Período:")) {
+            table.setSubtitle(line[0].trim());
+            lines.remove();
+        }        
     }
 
     private void parseScope(final Deque<String[]> lines,
@@ -135,7 +139,7 @@ public class CSV_File {
             if ((line.length > 1) && (!line[1].trim().isEmpty())) {
                 break;
             }
-            scope.add(line[0].trim());
+            scope.add(line[0].trim().replaceAll("\\:(\\d)", ": $1"));
             lines.remove();
         }
 
@@ -211,6 +215,7 @@ public class CSV_File {
         assert table != null;
 
         final List<String> sources = new ArrayList<>();
+        final StringBuilder builder = new StringBuilder();
         boolean first = true;
 
         while (true) {
@@ -224,15 +229,15 @@ public class CSV_File {
             /*if (!line[1].trim().isEmpty()) {
                 throw new IOException("invalid line format: [" + line[0] + "]");
             }*/
-            final String content = line[0].trim();
+            String content = line[0].trim();
             if (first) {
                 if (!content.startsWith("Fonte")) {
-                    throw new IOException("'Fonte' espected. [" + line[0] + "]");
+                    break;
+                    //throw new IOException("'Fonte' espected. [" + line[0] + "]");
                 }
-                final String ctt = content.substring(content.indexOf(':') + 1)
-                                                                        .trim();
-                if (!ctt.isEmpty()) {
-                    sources.add(ctt);
+                content = content.substring(content.indexOf(':') + 1).trim();
+                if (!content.isEmpty()) {
+                    builder.append(content);
                 }
                 first = false;
             } else {
@@ -240,7 +245,14 @@ public class CSV_File {
                                                    content.startsWith("Nota")) {
                     break;
                 }
-                sources.add(content);
+                if (!content.isEmpty()) { 
+                    builder.append(" ");
+                    builder.append(content);
+                }
+            }
+            if (content.endsWith(".")) {
+                sources.add(builder.toString());
+                builder.setLength(0);
             }
             lines.remove();
         }
@@ -254,6 +266,7 @@ public class CSV_File {
         assert table != null;
 
         final List<String> labels = new ArrayList<>();
+        final StringBuilder builder = new StringBuilder();
         boolean first = true;
 
         while (true) {
@@ -264,24 +277,33 @@ public class CSV_File {
             /*if (!line[1].trim().isEmpty()) {
                 throw new IOException("invalid line format: [" + line[0] + "]");
             }*/
-            final String content = line[0].trim();
+            String content = line[0].trim();
             if (first) {
                 if (!content.startsWith("Legenda")) {
                     break;
                 }
-                final String ctt = content.substring(content.indexOf(':') + 1)
-                                                                        .trim();
-                if (!ctt.isEmpty()) {
-                    labels.add(ctt);
+                content = content.substring(content.indexOf(':') + 1).trim();
+                if (!content.isEmpty()) {
+                    builder.append(content);
                 }
                 first = false;
             } else {
                 if (content.startsWith("Nota")) {
                     break;
                 }
-                labels.add(content);
-            }
+                if (!content.isEmpty()) { 
+                    if (content.startsWith("*")) {
+                        labels.add(builder.toString());
+                        builder.setLength(0);
+                    }
+                    builder.append(" ");
+                    builder.append(content);
+                }
+            }            
             lines.remove();
+        }
+        if (builder.length() > 0) {
+            labels.add(builder.toString());
         }
 
         table.setLabels(labels);
@@ -293,36 +315,43 @@ public class CSV_File {
         assert table != null;
 
         final List<String> notes = new ArrayList<>();
-        boolean first = true;
+        final StringBuilder builder = new StringBuilder();
+        boolean first = true;        
 
         while (true) {
             if (lines.isEmpty()) {
                 break;
             }
             final String[] line = lines.peek();
-            final String content = line[0].trim();
+            String content = line[0].trim();
             if (first) {
                 if (!content.startsWith("Nota")) {
                     throw new IOException("'Nota' espected. [" + line[0] + "]");
                 }
-                final String ctt = content.substring(content.indexOf(':') + 1)
-                                                                        .trim();
-                if (!ctt.isEmpty()) {
-                    notes.add(ctt);
+                content = content.substring(content.indexOf(':') + 1).trim();
+                if (!content.isEmpty()) {
+                    builder.append(content);                    
                 }
                 first = false;
             } else {
-                if (!content.isEmpty()) {                    
-                    notes.add(content);
+                if (!content.isEmpty()) { 
+                    builder.append(" ");
+                    builder.append(content);
                 }
             }
+            if (content.endsWith(".")) {
+                notes.add(builder.toString());
+                builder.setLength(0);
+            }
             lines.remove();
+        }
+        if (builder.length() > 0) {
+            notes.add(builder.toString());
         }
 
         table.setNotes(notes);
     }
-
-
+    
     public static void main(final String[] args) throws IOException {
         final CSV_File csv = new CSV_File();
         final Table table = csv.parse(new File(

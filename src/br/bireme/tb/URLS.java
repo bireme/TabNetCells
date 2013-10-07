@@ -38,6 +38,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
@@ -64,12 +65,26 @@ public class URLS {
                                  "(?s)<a[^>]*?href=\"([^\"]+)\"[^>]*?>.+?</a>");
     private static final int MAX_LEVEL = 2;
 
-    public class UrlElem {
+    public class UrlElem implements Comparable<UrlElem>{
         public URL father;    // url of the html page with the Qualif Record and csv links
         public String fatherParams; // POST parameters
         public Map<String,String> tableOptions; // def tables options
         public URL csv;       // url of the csv page
         public URL qualifRec; // url of the Qualification Record page
+        
+        @Override
+        public int compareTo(final UrlElem other) {
+            final String url = father.toString();
+            final int ret;
+                                                
+            if (url == null) {                
+                ret = ((other == null) || (other.father == null)) ? 0 : -1;
+            } else {
+                ret = (other == null) ? +1 
+                                      : url.compareTo(other.father.toString());
+            }
+            return ret;
+        }
     }
 
     private class MultiDefLoad extends Thread {
@@ -131,7 +146,7 @@ public class URLS {
         assert level >= 0;
         assert history != null;
 
-        final Set<UrlElem> set = new HashSet<>();
+        final Set<UrlElem> set = new TreeSet<>();
 
         if ((postParam != null) || !history.contains(html)) {
             if (level <= MAX_LEVEL) {
@@ -200,7 +215,7 @@ public class URLS {
             throw new NullPointerException("def");
         }
 
-        final Set<UrlElem> set = new HashSet<>();
+        final Set<UrlElem> set = new TreeSet<>();
         final Set<DEF_File.DefUrls> urls = new DEF_File().generateDefUrls(def);
 
         for (DEF_File.DefUrls url : urls) {
@@ -224,7 +239,7 @@ public class URLS {
             throw new NullPointerException("def");
         }       
         final int maxBatchSize = 100;
-        final Set<UrlElem> set = new HashSet<>();
+        final Set<UrlElem> set = new TreeSet<>();
         final Set<DEF_File.DefUrls> urls = new DEF_File().generateDefUrls(def);
         final int lastIdx = urls.size() - 1;
         
@@ -493,7 +508,7 @@ public class URLS {
             final Table table = csv.parse(content, ';');
 
             System.out.println(table);
-            System.out.println("\n");            
+            System.out.println("\n");
         }*/
         
          System.out.println("Total time: " + time.getTime());

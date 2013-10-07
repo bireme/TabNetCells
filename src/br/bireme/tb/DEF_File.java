@@ -58,10 +58,23 @@ public class DEF_File {
         public Map<String,String> options; // value, label
     }
     
-    public class DefUrls {
+    public class DefUrls implements Comparable<DefUrls> {
+
         public String url;
         public String postParams;
         public Map<String,String> options; // opt label, value label
+        
+        @Override
+        public int compareTo(final DefUrls other) {
+            final int ret;
+                                                
+            if (url == null) {                
+                ret = ((other == null) || (other.url == null)) ? 0 : -1;
+            } else {
+                ret = (other == null) ? +1 : url.compareTo(other.url);
+            }
+            return ret;
+        }
     }
 
     public Set<DefUrls> generateDefUrls(final URL url) throws IOException {
@@ -175,7 +188,7 @@ public class DEF_File {
         final SelectableOptions line = selectOptions.get("L");
         final SelectableOptions columm = selectOptions.get("C");
         final SelectableOptions content = selectOptions.get("I");
-        final SelectableOptions time = filterDates(selectOptions.get("A"), 3);      
+        final SelectableOptions time = filterDates(selectOptions.get("A"), 1);      
 
         line.options.remove(REGION_AND_FEDERATION_UNIT);
         line.options.remove(YEAR);

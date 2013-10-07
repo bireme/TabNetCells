@@ -23,17 +23,13 @@
 package br.bireme.tb;
 
 import br.bireme.utils.TimeString;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -67,7 +63,7 @@ public class Cells {
         }
         final File root = new File(rootDir);
 
-        if (root.exists() && !deleteFile(root)) {
+        if (root.exists() && (!Utils.deleteFile(root))) {
             final String msg = "Directory [" + root.getAbsolutePath()
                                                           + "] creation error.";
             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(msg);
@@ -82,7 +78,7 @@ public class Cells {
 
         System.out.println("Searching cvs files\n");
         final Set<String> files = generateCells(url, root);
-        System.out.println("\nTotal files created: " + files.size());
+        System.out.println("\nTotal cell files created: " + files.size());
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(
                                                new File(root, "index.html")))) {
@@ -119,7 +115,7 @@ public class Cells {
             throw new NullPointerException("root");
         }
 
-        Set<String> ret = null;
+        final Set<String> ret = new TreeSet<>();
         final URLS urls = new URLS();
         final Set<URLS.UrlElem> set = urls.loadCsvFromHtml(new URL(url));
         
@@ -134,6 +130,14 @@ public class Cells {
         System.out.println("\nTotal csv files found: " + set.size());
         System.out.println("Generating cells\n");
 
+        try {
+            Utils.copyDirectory(new File("mockup/css"), new File(root, "css"));
+            Utils.copyDirectory(new File("mockup/img"), new File(root, "img"));
+        } catch (IOException ioe) {
+                Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
+                       .log(Level.SEVERE, "skipping diretory: (css/img)", ioe);
+        }
+        int tableNum = 1;
         for (URLS.UrlElem elem : set) {
             try {
                 final String[] page = urls.loadPageGet(elem.csv);
@@ -141,7 +145,7 @@ public class Cells {
                 final CSV_File csv = new CSV_File();
                 final Table table = csv.parse(content, CSV_SEPARATOR);
 
-                ret = genCellsFromTable(table, elem, root);
+                genCellsFromTable(table, elem, root, ret, tableNum++);
             } catch (Exception ex) {
                 Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
                        .log(Level.SEVERE, "skipping file: " + elem.csv, ex);
@@ -151,14 +155,17 @@ public class Cells {
         return ret;
     }
 
-    private static Set<String> genCellsFromTable(final Table table,
-                                                 final URLS.UrlElem elem,
-                                                 final File root) {
+    private static void genCellsFromTable(final Table table,
+                                          final URLS.UrlElem elem,
+                                          final File root,
+                                          final Set<String> urls,
+                                          final int tableNum) {
         assert table != null;
         assert elem != null;
         assert root != null;
-        
-        final Set<String> urls = new TreeSet<>();
+        assert urls != null;
+        assert tableNum > 0;
+                
         final List<List<String>> elems = table.getLines();
         final Iterator<List<String>> yit = elems.iterator();
         int idx = 1;
@@ -181,21 +188,22 @@ public class Cells {
                 final Matcher mat = REFUSE_PAT.matcher(cell.getValue());
                 if (!mat.matches()) {
                     try {
-                        urls.add(saveToFile(cell, root));
+                        urls.add(saveToFile(cell, root, tableNum));
                     } catch (IOException ioe) {
                         Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
-                               .log(Level.SEVERE, "Could not save file.", ioe);
+                               .log(Level.SEVERE, "Can not save file.", ioe);
                     }
                 }
             }
         }
-        return urls;
     }
 
     private static String saveToFile(final Cell cell,
-                                     final File rootDir) throws IOException {
+                                     final File rootDir,
+                                     final int tableNum) throws IOException {
         assert cell != null;
         assert rootDir != null;
+        assert tableNum > 0;
 
         final String father = cell.getElem().father.toString();
         final String url = cell.getElem().qualifRec.toString();
@@ -207,8 +215,8 @@ public class Cells {
         final String edition = mat.group(2);
         final int idx1 = father.lastIndexOf('/');
         final int idx2 = father.lastIndexOf('.');
-        final String fname = father.substring(idx1 + 1, idx2) + "_"
-                                                                + cell.getIdx();
+        final String fname = father.substring(idx1 + 1, idx2) + "_tb"
+                                             + tableNum + "_ce" + cell.getIdx();
         final File path = new File(rootDir, "/" + edition + "/" + qualRec);
         final String spath = path.getPath();
         final String cfname = fname + ".html";
@@ -219,7 +227,7 @@ public class Cells {
                                                           + "] creation error");
             }
         }
-        saveToFile(cell, path, cfname);
+        saveToRipsaFile(cell, path, cfname);
 
         return edition + "/" + qualRec + "/" + cfname;
     }
@@ -233,58 +241,39 @@ public class Cells {
 
         File file = new File(path, fname);
 //System.out.println("writing file: [" + file.getCanonicalPath() + "]");
-        if (file.exists()) {  // existem repetições de arquivos em cel diferentes
-            file = renameFile(path, fname);
+        if (file.exists()) {
+            throw new IOException("File[" + file.getPath() 
+                                                          + "] already exists");
         }
         try (BufferedWriter writer = new BufferedWriter(
                                        new FileWriter(file))) {
             writer.append(cell.toHtml());
         }        
     }
-
-    private static boolean deleteFile(final File file) {
-        assert file != null;
-
-        boolean status = true;
-
-        if (file.isDirectory()){
-            for (File child : file.listFiles()) {
-                status = status && deleteFile(child);
-            }
-        }
-        return status && file.delete();
-    }
     
-    private static File renameFile(final File path,
-                                   final String fname) throws IOException {
+    private static void saveToRipsaFile(final Cell cell,
+                                        final File path,
+                                        final String fname) throws IOException {
+        assert cell != null;
         assert path != null;
         assert fname != null;
+
+        File file = new File(path, fname);
+        final String content = RIPSA.cell2html(cell);
         
-        final int dotIndex = fname.lastIndexOf('.');
-        final String prefix = (dotIndex == -1) ? fname 
-                                               : fname.substring(0, dotIndex);
-        final String suffix = (dotIndex == -1) ? "" : fname.substring(dotIndex);
-        final Pattern pat = Pattern.compile(prefix + "\\((\\d+)\\)" + suffix);
-        final Matcher mat = pat.matcher("");
-        final String[] fNames = path.list();
-        int last = 1;
-        
-        for (String name : fNames) {
-            mat.reset(name);
-            if (mat.matches()) {
-                final int idx = Integer.parseInt(mat.group(1));
-                if (last < idx) {
-                    last = idx;
-                }
-            }
+        if (file.exists()) {
+            throw new IOException("File[" + file.getPath() 
+                                                          + "] already exists");
         }
-        final String nName = prefix + "(" + last + ")" + suffix;
-            
-        return new File(path, nName);
+        try (BufferedWriter writer = new BufferedWriter(
+                                       new FileWriter(file))) {
+            writer.append(content);
+        }        
     }
 
-    private static void loadCsvFromFile() throws IOException {
+    /*private static void loadCsvFromFile() throws IOException {
         final File root = new File("TabNetCells");
+        final Set<String> surls = new TreeSet<>();
         final URLS urls = new URLS();
         final BufferedReader reader = new BufferedReader(new InputStreamReader(
                   new FileInputStream("csvfiles.txt"), URLS.DEFAULT_ENCODING));
@@ -313,14 +302,14 @@ System.out.println("DEBUG - csv parse - inicio");
                 final Table table = csv.parse(content, CSV_SEPARATOR);
 System.out.println("DEBUG - csv parse - fim");                
 System.out.println("DEBUG - genCellsFromTable - inicio");
-                genCellsFromTable(table, elem, root);
+                genCellsFromTable(table, elem, root, surls);
 System.out.println("DEBUG - genCellsFromTable - fim");                
             } catch (Exception ex) {
                 Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
                        .log(Level.SEVERE, "skipping file: " + elem.csv, ex);
             }        
         }
-    }
+    }*/
     
     public static void main(final String[] args) throws IOException {
         final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
