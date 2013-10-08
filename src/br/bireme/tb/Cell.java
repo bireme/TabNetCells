@@ -48,7 +48,7 @@ public class Cell {
     private List<String> sources;
     private List<String> labels;
     private List<String> notes;
-    private URLS.UrlElem elem;
+    private UrlElem elem;
 
     public int getIdx() {
         return idx;
@@ -132,11 +132,11 @@ public class Cell {
         this.notes = notes;
     }
 
-    public URLS.UrlElem getElem() {
+    public UrlElem getElem() {
         return elem;
     }
 
-    public void setElem(final URLS.UrlElem elem) {
+    public void setElem(final UrlElem elem) {
         this.elem = elem;
     }
 

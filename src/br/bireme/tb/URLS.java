@@ -22,26 +22,26 @@
 
 package br.bireme.tb;
 
-import br.bireme.utils.TimeString;
+//import br.bireme.utils.TimeString;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -58,6 +58,8 @@ public class URLS {
 
     public static final String DEFAULT_ENCODING = "ISO8859-1";
     
+    public static final char CSV_SEPARATOR = ';';
+    
     private static final Pattern CSV_PATTERN = Pattern.compile(
                                          "(?i)<a href=\"?([^\\.\n]+?.csv)\"?>");
     private static final Pattern QUALIF_REC_PATTERN = Pattern.compile(
@@ -65,102 +67,123 @@ public class URLS {
     private static final Pattern URL_PATTERN = Pattern.compile(
                                  "(?s)<a[^>]*?href=\"([^\"]+)\"[^>]*?>.+?</a>");
     private static final int MAX_LEVEL = 2;
+    
+    private static final Pattern REFUSE_PAT =
+                                          Pattern.compile("\\s*[\\.\\*]+\\s*");
+    private static final Pattern EDITION_PAT = Pattern.compile(
+           "\\?node=([^\\&]+)\\&lang=\\w+\\&version=([^\\s]+)");
 
-    public class UrlElem implements Comparable<UrlElem>{
-        public URL father;    // url of the html page with the Qualif Record and csv links
-        public String fatherParams; // POST parameters
-        public Map<String,String> tableOptions; // def tables options
-        public URL csv;       // url of the csv page
-        public URL qualifRec; // url of the Qualification Record page
+    public static void generateFileStructure(final String url,
+                                             final String rootDir)
+                                                            throws IOException {
+        if (url == null) {
+            throw new NullPointerException("url");
+        }
+        if (rootDir == null) {
+            throw new NullPointerException("rootDir");
+        }
+        final File root = new File(rootDir);
+
+        if (root.exists() && (!Utils.deleteFile(root))) {
+            final String msg = "Directory [" + root.getAbsolutePath()
+                                                          + "] creation error.";
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(msg);
+            throw new IOException(msg);
+        }
+        if (!root.mkdirs()) {
+            final String msg = "Directory [" + root.getAbsolutePath()
+                                                          + "] creation error.";
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).severe(msg);
+            throw new IOException(msg);
+        }
+
+        System.out.println("Searching cvs files\n");
+        final Set<String> files = generateCells(url, root);
+        System.out.println("\nTotal cell files created: " + files.size());
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+                                               new File(root, "index.html")))) {
+            writer.append("<!DOCTYPE html>\n");
+            writer.append("<html>\n");
+            writer.append(" <head>\n");
+            writer.append("  <meta charset=\"UTF-8\">\n");
+            writer.append(" </head>\n");
+            writer.append(" <body>\n");
+            writer.append("  <h1>Fichas de Qualificação</h1>\n");
+            for (String path : files) {
+                writer.append("  <ul>\n");
+                writer.append("   <li>\n");
+                writer.append("    <a href=\"" + path + "\">" + path +"</a>\n");
+                writer.append("   </li>\n");
+                writer.append("  </ul>\n");
+            }
+            writer.append(" </body>\n");
+            writer.append("</html>\n");
+        } catch (IOException ioe) {
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE,
+                                             "Index file creation error.", ioe);
+        }
+        System.out.println("Files saved at: " + root.getAbsolutePath());
+    }
+    
+    public static Set<String> generateCells(final String url,
+                                             final File root) 
+                                                            throws IOException {
+        if (url == null) {
+            throw new NullPointerException("url");
+        }
+        if (root == null) {
+            throw new NullPointerException("root");
+        }
+
+        final Set<String> urls = loadCsvFromHtml(new URL(url), root);
         
-        @Override
-        public int compareTo(final UrlElem other) {
-            final String url = csv.toString();
-            final int ret;
-                                                
-            if (url == null) {                
-                ret = ((other == null) || (other.father == null)) ? 0 : -1;
-            } else {
-                ret = (other == null) ? +1 
-                                      : url.compareTo(other.csv.toString());
-            }
-            return ret;
+        System.out.println("\nTotal csv files found: " + urls.size());
+
+        try {
+            Utils.copyDirectory(new File("mockup/css"), new File(root, "css"));
+            Utils.copyDirectory(new File("mockup/img"), new File(root, "img"));
+        } catch (IOException ioe) {
+                Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
+                       .log(Level.SEVERE, "skipping diretory: (css/img)", ioe);
         }
+        
+        return urls;
     }
 
-    private class MultiDefLoad extends Thread {
-        final URL html;
-        final String postParam;
-        final Map<String,String> tableOptions;
-        final Set<URL> history;
-        final CountDownLatch latch;
-        UrlElem result;
+    private static Set<String> loadCsvFromHtml(final URL html,
+                                               final File root) 
+                                                            throws IOException {
+        final Set<String> setUrls = new TreeSet<>();
+        final Set<URL> history = new HashSet<>();
 
-        MultiDefLoad(final URL html,
-                     final String postParam,
-                     final Map<String,String> tableOptions,
-                     final Set<URL> history,
-                     final CountDownLatch latch) {
-            this.html = html;
-            this.postParam = postParam;
-            this.tableOptions = tableOptions;
-            this.history = history;
-            this.latch = latch;
-            result = null;
-        }
-
-        @Override
-        public void run() {
-            try {
-                final Set<UrlElem> csv = loadCsvFromHtml(html, postParam, 
-                                              tableOptions, MAX_LEVEL, history);
-                if (csv.size() == 1) {
-                    result = csv.iterator().next();
-                } else {
-                    Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, 
-                            "CSV #. Skipping loadCsvFromHtml file: [" + html 
-                                             + "] params: [" + postParam + "]");
-                    result = null;
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, 
-                                   "Skipping loadCsvFromHtml file: [" + html 
-                                         + "] params: [" + postParam + "]", ex);
-            }
-            latch.countDown();
-        }
-
-        UrlElem getResult() {
-            return result;
-        }
+        loadCsvFromHtml(html, null, null, 0, 0, setUrls, history, root);
+        
+        return setUrls;
     }
 
-    public Set<UrlElem> loadCsvFromHtml(final URL html) throws IOException {
-        final Set<URL> set = Collections.newSetFromMap(
-                                         new ConcurrentHashMap<URL, Boolean>());
-
-        return loadCsvFromHtml(html, null, null, 0, set);
-    }
-
-    private Set<UrlElem> loadCsvFromHtml(final URL html,
-                                         final String postParam,
-                                         final Map<String,String> tableOptions,
-                                         final int level,
-                                         final Set<URL> history)
+    private static int loadCsvFromHtml(final URL html,
+                                       final String postParam,
+                                       final Map<String,String> tableOptions,
+                                       final int tableNum,
+                                       final int level,
+                                       final Set<String> setUrls,
+                                       final Set<URL> history,
+                                       final File root)
                                                             throws IOException {
         assert html != null;
+        assert tableNum >= 0;
         assert level >= 0;
+        assert setUrls != null;
         assert history != null;
+        assert root != null;
+        
+        int tNum = tableNum; 
 
-        final Set<UrlElem> set = new TreeSet<>();
-
-        if ((postParam != null) || !history.contains(html)) {
+        if ((postParam != null) || (!history.contains(html))) {
             if (level <= MAX_LEVEL) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, null, ex);
-                }
+                history.add(html);
+
                 final String[] page;
                 try {
                     page = (postParam == null) ? loadPageGet(html)
@@ -183,16 +206,23 @@ public class URLS {
                         elem.tableOptions = tableOptions;
                         elem.csv = withDomain(html, mat.group(1));
                         elem.qualifRec = withDomain(html, mat2.group(1));
-                        set.add(elem);
+                        try {
+                            final String[] csvpage = loadPageGet(elem.csv);
+                            final CSV_File csv = new CSV_File();
+                            final Table table = csv.parse(csvpage[1], CSV_SEPARATOR);
+
+                            genCellsFromTable(table, elem, root, setUrls, ++tNum);
+                        } catch (Exception ex) {
+                            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
+                           .log(Level.SEVERE, "skipping file: " + elem.csv, ex);
+                        }   
                     }
                 } else {            // Did not find a cvs link in that page
                     if (postParam != null) {
-                        String out = TESTE.executePost(html.toString(), postParam);
                         Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
                                            .log(Level.SEVERE, 
                                            "skipping loadCsvFromHtml/Def file: " 
                                                + html + " params:" + postParam);                        
-                        String out1 = TESTE.executePost(html.toString(), postParam);
                         throw new IOException(
                                             "CSV link not found into def page");
                     }
@@ -201,15 +231,13 @@ public class URLS {
                     for (URL url : urls) {
                         try {
                             final String file = url.getFile();
-                            final Set<UrlElem> aux;
-                            
                             if (file.endsWith(".def")) {
-                                aux = loadCsvFromDef_0(url, history);
+                                loadCsvFromDef(url, tNum, setUrls, history, 
+                                                                          root);
                             } else {
-                                aux = loadCsvFromHtml(url, null, null, 
-                                                           level + 1, history);
+                                loadCsvFromHtml(url, null, null, tNum,
+                                             level + 1, setUrls, history, root);
                             }
-                            set.addAll(aux);
                         } catch (IOException ioe) {                             
                             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
                                            .log(Level.SEVERE, 
@@ -220,108 +248,85 @@ public class URLS {
                     }
                 }
             }
-            history.add(html);
         }
-
-        return set;
+        
+        return tNum;
     }
     
+    private static void genCellsFromTable(final Table table,
+                                          final UrlElem elem,
+                                          final File root,
+                                          final Set<String> urls,
+                                          final int tableNum) {
+        assert table != null;
+        assert elem != null;
+        assert root != null;
+        assert urls != null;
+        assert tableNum >= 0;
+                
+        final List<List<String>> elems = table.getLines();
+        final Iterator<List<String>> yit = elems.iterator();
+        int idx = 1;
+
+        for (String row : table.getRow()) {
+            final Iterator<String> xit = yit.next().iterator();
+            for (List<String> hdr : table.getHeader()) {
+                final Cell cell = new Cell();
+                cell.setIdx(idx++);
+                cell.setElem(elem);
+                cell.setHeader(hdr);
+                cell.setLabels(table.getLabels());
+                cell.setNotes(table.getNotes());
+                cell.setRow(row);
+                cell.setScope(table.getScope());
+                cell.setSources(table.getSources());
+                cell.setSubtitle(table.getSubtitle());
+                cell.setTitle(table.getTitle());
+                cell.setValue(xit.next());
+                final Matcher mat = REFUSE_PAT.matcher(cell.getValue());
+                if (!mat.matches()) {
+                    try {
+                        urls.add(saveToFile(cell, root, tableNum));
+                    } catch (IOException ioe) {
+                        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
+                               .log(Level.SEVERE, "Can not save file.", ioe);
+                    }
+                }
+            }
+        }
+    }
+        
     /**
-     * Extracts a list of cvs by combining fields from a def file.
+     * Extracts cvs links by combining fields from a def file.
      * @param def url of the def page from which the cvs will be extracted
-     * @return  A set of UrlElem elements
      * @throws IOException
      */
-    private Set<UrlElem> loadCsvFromDef_0(final URL def,
-                                          final Set<URL> history)
+    private static void loadCsvFromDef(final URL def,
+                                       final int tableNum,
+                                       final Set<String> setUrls,
+                                       final Set<URL> history,
+                                       final File root)
                                                             throws IOException {
-        if (def == null) {
-            throw new NullPointerException("def");
-        }
-
-        final Set<UrlElem> set = new TreeSet<>();
+        assert def != null;
+        assert tableNum >= 0;
+        assert setUrls != null;
+        assert history != null;
+        assert root != null;
+        
         final Set<DEF_File.DefUrls> urls = new DEF_File().generateDefUrls(def);
-
-        for (DEF_File.DefUrls url : urls) {
+        int tNum = tableNum;
+        
+        for (DEF_File.DefUrls url : urls) {            
             try {
-                final Set<UrlElem> aux = loadCsvFromHtml(new URL(url.url), 
-                               url.postParams, url.options, MAX_LEVEL, history);
-                set.addAll(aux);  
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, null, ex);
-                }
-
+                tNum = loadCsvFromHtml(new URL(url.url), url.postParams, 
+                                       url.options, tNum, MAX_LEVEL, setUrls, 
+                                                                 history, root);
             } catch (IOException ioe) {
                 Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
                     .log(Level.SEVERE, "skipping loadCsvFromHtml file: " 
                                                                 + url.url, ioe);
             }
         }
-
-        return set;
-    }
-
-    private Set<UrlElem> loadCsvFromDef(final URL def,
-                                        final Set<URL> history)
-                                                            throws IOException {
-        if (def == null) {
-            throw new NullPointerException("def");
-        }       
-        final int maxBatchSize = 100;
-        final Set<UrlElem> set = new TreeSet<>();
-        final Set<DEF_File.DefUrls> urls = new DEF_File().generateDefUrls(def);
-        final int lastIdx = urls.size() - 1;
-        
-        System.out.print("Generating combinations (POST) : <");        
-        if (lastIdx >= 0) {
-            final List<DEF_File.DefUrls> lurls = new ArrayList<>(urls);                        
-            int current = 0;
-
-            while (current <= lastIdx) {            
-                final int batchSize;
-                int last = current + maxBatchSize - 1;
-                if (last <= lastIdx) {
-                    batchSize = maxBatchSize;
-                } else {
-                    last = lastIdx;
-                    batchSize = lastIdx - current + 1;                    
-                }
-
-                final CountDownLatch latch = new CountDownLatch(batchSize);                
-                final List<MultiDefLoad> lst = new ArrayList<>();
-                
-                for (int idx = current; idx <= last; idx++) {
-                    final DEF_File.DefUrls url = lurls.get(idx);
-                    final MultiDefLoad mdl = new MultiDefLoad(new URL(url.url), 
-                        url.postParams, url.options, history, latch);
-                    mdl.start();
-                    lst.add(mdl);
-                }
-                try {
-                    latch.await();  //main thread is waiting on CountDownLatch to finish
-                } catch (InterruptedException ie) {
-                   throw new IOException(ie);
-                }
-                for (MultiDefLoad load : lst) {
-                    final UrlElem elem = load.getResult();
-                    if (elem != null) {
-System.out.println("father=" + elem.father + " params=" + elem.fatherParams + " csv=" + elem.csv);
-                        if (set.contains(elem)) {
-                            int x = 0;
-                        }
-                        set.add(elem);
-                    }
-                }                                                
-                current += batchSize;
-            }
-        }
-        System.out.println("> - OK");
-        
-        assert (urls.size() == set.size());
-        
-        return set;
     }
 
     /**
@@ -331,7 +336,7 @@ System.out.println("father=" + elem.father + " params=" + elem.fatherParams + " 
      * and its content.
      * @throws IOException
      */
-    public String[] loadPageGet(final URL url) throws IOException {
+    public static String[] loadPageGet(final URL url) throws IOException {
         if (url == null) {
             throw new NullPointerException("url");
         }
@@ -455,7 +460,7 @@ System.out.println("father=" + elem.father + " params=" + elem.fatherParams + " 
             //rd.close();
         }
         connection.disconnect();
-        System.out.print(".");
+        //System.out.print(".");
         //System.out.println(" - OK");
 
         return new String[] {url.toString() + "?" + urlParameters,
@@ -511,12 +516,79 @@ System.out.println("father=" + elem.father + " params=" + elem.fatherParams + " 
         }
         return ret;
     }
+        
+    private static String saveToFile(final Cell cell,
+                                     final File rootDir,
+                                     final int tableNum) throws IOException {
+        assert cell != null;
+        assert rootDir != null;
+        assert tableNum > 0;
+
+        final String father = cell.getElem().father.toString();
+        final String url = cell.getElem().qualifRec.toString();
+        final Matcher mat = EDITION_PAT.matcher(url);
+        if (!mat.find()) {
+            throw new IOException("out of pattern url [" + url + "]");
+        }
+        final String qualRec = mat.group(1);
+        final String edition = mat.group(2);
+        final int idx1 = father.lastIndexOf('/');
+        final int idx2 = father.lastIndexOf('.');
+        final String fname = father.substring(idx1 + 1, idx2) + "_tb"
+                                             + tableNum + "_ce" + cell.getIdx();
+        final File path = new File(rootDir, "/" + edition + "/" + qualRec);
+        final String spath = path.getPath();
+        final String cfname = fname + ".html";
+
+        if (!path.isDirectory()) {
+            if (!path.mkdirs()) {
+                throw new IOException("directory [" + spath
+                                                          + "] creation error");
+            }
+        }
+        saveToRipsaFile(cell, path, cfname);
+
+        return edition + "/" + qualRec + "/" + cfname;
+    }
+
+    private static void saveToRipsaFile(final Cell cell,
+                                        final File path,
+                                        final String fname) throws IOException {
+        assert cell != null;
+        assert path != null;
+        assert fname != null;
+
+        File file = new File(path, fname);
+        final String content = RIPSA.cell2html(cell);
+        
+        if (file.exists()) {
+            throw new IOException("File[" + file.getPath() 
+                                                          + "] already exists");
+        }
+        try (BufferedWriter writer = new BufferedWriter(
+                                       new FileWriter(file))) {
+            writer.append(content);
+        }        
+    }
 
     public static void main(final String[] args) throws IOException {
-        final TimeString time = new TimeString();
+        final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        final FileHandler fh = new FileHandler("TabNetCells.log", false);  
+        logger.addHandler(fh); 
+        
+        final String URL = URLS.ROOT_URL;
+        //final TimeString time = new TimeString();
 
-        time.start();
-        final URLS urls = new URLS();
+        //time.start();
+        generateFileStructure(URL, "TabNetCells");
+        
+        //System.out.println("Total time: " + time.getTime());
+    }
+
+    public static void main0(final String[] args) throws IOException {
+        //final TimeString time = new TimeString();
+
+        //time.start();
 
         /*final URL xurl = new URL("http://tabnet.datasus.gov.br/cgi/deftohtm.exe?idb2011/e0602.def");
         final Set<UrlElem> set0 = urls.loadCsvFromDef(xurl, new HashSet<URL>());
@@ -528,11 +600,12 @@ System.out.println("father=" + elem.father + " params=" + elem.fatherParams + " 
 
         final String url = 
                 "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?idb2011/a01.def";
-        final Set<UrlElem> set = urls.loadCsvFromHtml(new URL(ROOT_URL));
+        final File root = new File("TabNetCells");
+        final Set<String> set = loadCsvFromHtml(new URL(ROOT_URL), root);
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
                new FileOutputStream("csvfiles.txt"), URLS.DEFAULT_ENCODING))) {
-            for (URLS.UrlElem elem : set) {
-                writer.append(elem.csv.toString());
+            for (String elem : set) {
+                writer.append(elem);
                 //writer.append("father=[" + elem.father.toString() + "]");
                 writer.newLine();
             }
@@ -551,6 +624,6 @@ System.out.println("father=" + elem.father + " params=" + elem.fatherParams + " 
             System.out.println("\n");
         }*/
         
-         System.out.println("Total time: " + time.getTime());
+        // System.out.println("Total time: " + time.getTime());
     }
 }
