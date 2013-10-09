@@ -44,7 +44,8 @@ table tr:nth-child(even) {background:rgb(227,227,227); color:rgb(49,49,49); }
 table tr:nth-child(odd) {background:rgb(255,255,255); color:rgb(49,49,49);}
 
 /* ASIDE */
-aside{float:right;width:200px;margin:25px 25px 25px 0;background:#E8F2F2;padding: 12px;}
+aside{float:right;width:200px;margin:25px 25px 25px 0;}
+aside ul {background:#E8F2F2;padding: 12px;margin-bottom:12px;}
 aside ul li{list-style-type:none;border-bottom:1px solid #C8DEF5;padding:4px 0;font-size: 90%;color:rgb(82,82,82);}
 aside ul li:first-child{border-top:1px solid #C8DEF5;}
 aside ul li label{font-weight:bold;}
