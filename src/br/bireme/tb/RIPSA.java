@@ -39,7 +39,7 @@ import java.util.logging.Logger;
  * date 20131002
  */
 class RIPSA {
-    private static final String TEMPLATE_FILE = "mockup/template.html";
+    private static final String TEMPLATE_FILE = "template/template.html";
     private static String TEMPLATE = null;
     
     static {
@@ -184,12 +184,17 @@ class RIPSA {
             str = str.replace("$$notes$$", "");
         }
         
+        str = str.replace("$$father$$", cell.getElem().father.toString());
+        str = str.replace("$$qualifRec$$", cell.getElem().qualifRec.toString());
+        
         final Map<String,String> tableOptions = cell.getElem().tableOptions;
         builder.setLength(0);
         first = true;
         if ((tableOptions != null) && (!tableOptions.isEmpty())) {
-            str = str.replace("$$tableHeader$$", "<strong>Tabela de dados do "
-                      + "TabNet gerada com os seguintes filtros:</strong><br/><br/>");        
+            str = str.replace("$$tableHeader$$", "<strong>Filtros usados para a"
+            + " geração da tabela de dados do TabNet</strong>\n<ul>\n");
+            /*str = str.replace("$$tableHeader$$", "<strong>Tabela de dados do "
+                      + "TabNet gerada com os seguintes filtros:</strong><br/><br/>");*/
             for (Map.Entry<String,String> option : tableOptions.entrySet()) {
                 if (first) {
                     first = false;
@@ -202,14 +207,11 @@ class RIPSA {
                 builder.append(option.getValue());
                 builder.append("</li>\n");
             }        
-            str = str.replace("$$tableOptions$$", builder.toString());
+            str = str.replace("$$tableOptions$$", builder.toString() + "\n</ul>");
         } else {
             str = str.replace("$$tableHeader$$", "");
             str = str.replace("$$tableOptions$$", "");
-        }
-        
-        str = str.replace("$$father$$", cell.getElem().father.toString());
-        str = str.replace("$$qualifRec$$", cell.getElem().qualifRec.toString());
+        }                
                 
         return str;
     }    

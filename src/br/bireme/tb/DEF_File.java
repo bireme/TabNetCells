@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
  * @author Heitor Barbieri
  * date: 20130913
  */
-public class DEF_File {
+class DEF_File {
     private static final Pattern FORM_PATTERN = Pattern.compile(
                                    "(?i)<FORM.+?ACTION=\\\"([^\\\"]+)\\\".*?>");
     private static final Pattern SELECT_PATTERN = Pattern.compile(
@@ -51,18 +51,18 @@ public class DEF_File {
     private static final Pattern OPTION_PATTERN = Pattern.compile(
                            "(?i)<OPTION.+?VALUE=\"([^\"]+)\".*?>(.+?)(<|\n|$)");
     
-    public class SelectableOptions {
-        public String label;
-        public String name;
-        public String id;
-        public Map<String,String> options; // value, label
+    class SelectableOptions {
+        String label;
+        String name;
+        String id;
+        Map<String,String> options; // value, label
     }
     
-    public class DefUrls implements Comparable<DefUrls> {
+    class DefUrls implements Comparable<DefUrls> {
 
-        public String url;
-        public String postParams;
-        public Map<String,String> options; // opt label, value label
+        String url;
+        String postParams;
+        Map<String,String> options; // opt label, value label
         
         @Override
         public int compareTo(final DefUrls other) {
@@ -77,7 +77,7 @@ public class DEF_File {
         }
     }
 
-    public Set<DefUrls> generateDefUrls(final URL url) throws IOException {
+    Set<DefUrls> generateDefUrls(final URL url) throws IOException {
         if (url == null) {
             throw new NullPointerException("url");
         }

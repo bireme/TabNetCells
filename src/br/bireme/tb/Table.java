@@ -22,6 +22,7 @@
 
 package br.bireme.tb;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,95 +30,95 @@ import java.util.List;
  * @author Heitor Barbieri
  * date 20130911
  */
-public class Table {
+class Table {
     private String title;
     private String subtitle;
-    private List<String> scope;
+    private ArrayList<String> scope;
     private String rowHeader;
-    private List<List<String>> header;
-    private List<String> row;
-    private List<List<String>> lines;
-    private List<String> sources;
-    private List<String> labels;
-    private List<String> notes;
+    private ArrayList<ArrayList<String>> header;
+    private ArrayList<String> row;
+    private ArrayList<ArrayList<String>> lines;
+    private ArrayList<String> sources;
+    private ArrayList<String> labels;
+    private ArrayList<String> notes;
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public void setTitle(final String title) {
+    void setTitle(final String title) {
         this.title = title;
     }
 
-    public String getSubtitle() {
+    String getSubtitle() {
         return subtitle;
     }
 
-    public void setSubtitle(final String subtitle) {
+    void setSubtitle(final String subtitle) {
         this.subtitle = subtitle;
     }
 
-    public List<String> getScope() {
+    List<String> getScope() {
         return scope;
     }
 
-    public void setScope(final List<String> scope) {
+    void setScope(final ArrayList<String> scope) {
         this.scope = scope;
     }
 
-    public String getRowHeader() {
+    String getRowHeader() {
         return rowHeader;
     }
 
-    public void setRowHeader(final String rowHeader) {
+    void setRowHeader(final String rowHeader) {
         this.rowHeader = rowHeader;
     }
 
-    public List<String> getRow() {
+    List<String> getRow() {
         return row;
     }
 
-    public void setRow(final List<String> row) {
+    void setRow(final ArrayList<String> row) {
         this.row = row;
     }
 
-    public List<List<String>> getHeader() {
+    ArrayList<ArrayList<String>> getHeader() {
         return header;
     }
 
-    public void setHeader(final List<List<String>> header) {
+    void setHeader(final ArrayList<ArrayList<String>> header) {
         this.header = header;
     }
 
-    public List<List<String>> getLines() {
+    ArrayList<ArrayList<String>> getLines() {
         return lines;
     }
 
-    public void setLines(final List<List<String>> lines) {
+    void setLines(final ArrayList<ArrayList<String>> lines) {
         this.lines = lines;
     }
 
-    public List<String> getSources() {
+    List<String> getSources() {
         return sources;
     }
 
-    public void setSources(final List<String> sources) {
+    void setSources(final ArrayList<String> sources) {
         this.sources = sources;
     }
 
-    public List<String> getLabels() {
+    List<String> getLabels() {
         return labels;
     }
 
-    public void setLabels(final List<String> labels) {
+    void setLabels(final ArrayList<String> labels) {
         this.labels = labels;
     }
 
-    public List<String> getNotes() {
+    List<String> getNotes() {
         return notes;
     }
 
-    public void setNotes(final List<String> notes) {
+    void setNotes(final ArrayList<String> notes) {
         this.notes = notes;
     }
 

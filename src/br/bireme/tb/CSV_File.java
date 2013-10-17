@@ -30,20 +30,23 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
  * @author Heitor Barbieri
  * date: 20130819
  */
-public class CSV_File {
+class CSV_File {
+    private static final Pattern LABEL_PAT =
+                                          Pattern.compile("\\s*\\*+\\s*");
 
-    public Table parse(final File csv,
-                       final String encoding,
-                       final char separator) throws IOException {
+    Table parse(final File csv,
+                final String encoding,
+                final char separator) throws IOException {
         if (csv == null) {
             throw new NullPointerException("csv");
         }
@@ -59,8 +62,8 @@ public class CSV_File {
         return parse0(myEntries);
     }
 
-    public Table parse(final String csv,
-                       final char separator) throws IOException {
+    Table parse(final String csv,
+                final char separator) throws IOException {
         if (csv == null) {
             throw new NullPointerException("csv");
         }
@@ -105,7 +108,7 @@ public class CSV_File {
             throw new IOException("null title");
         }
         final String[] line = lines.remove();
-        table.setTitle(line[0].trim());
+        table.setTitle(line[0].trim());           
     }
 
     private void parseSubtile(final Deque<String[]> lines,
@@ -129,7 +132,7 @@ public class CSV_File {
         assert lines != null;
         assert table != null;
 
-        final List<String> scope = new ArrayList<>();
+        final ArrayList<String> scope = new ArrayList<>();
 
         while (true) {
             if (lines.isEmpty()) {
@@ -151,7 +154,7 @@ public class CSV_File {
         assert lines != null;
         assert table != null;
 
-        final List<List<String>> header = new ArrayList<>();
+        final ArrayList<ArrayList<String>> header = new ArrayList<>();
         boolean found = false;
 
         while (!found) {
@@ -169,7 +172,7 @@ public class CSV_File {
                 throw new IOException("invalid header: [" + line[0] + "]");
             }
             for (int idx = 1; idx < lsize; idx++) {
-                List<String> lst = (header.size() < idx) ? null
+                ArrayList<String> lst = (header.size() < idx) ? null
                                                          : header.get(idx-1);
                 if (lst == null) {
                     lst = new ArrayList<>();
@@ -187,8 +190,9 @@ public class CSV_File {
         assert lines != null;
         assert table != null;
 
-        final List<List<String>> ret = new ArrayList<>();
-        final List<String> row = new ArrayList<>();
+        final ArrayList<ArrayList<String>> ret = new ArrayList<>();
+        final ArrayList<String> row = new ArrayList<>();
+        final Matcher mat = LABEL_PAT.matcher("");
 
         while (true) {
             if (lines.isEmpty()) {
@@ -202,9 +206,39 @@ public class CSV_File {
             }
             lines.remove();
             row.add(line[0]);
-            ret.add(Arrays.asList(Arrays.copyOfRange(line, 1, lSize)));
+            
+            final ArrayList<String> lstLines = new ArrayList<>();
+            for (int idx = 1; idx < lSize; idx++) {
+                mat.reset(line[idx]);               
+                if (mat.matches()) {
+                    boolean obs = table.getHeader().get(idx-1).get(0)
+                                                                 .equals("Obs");                    
+                    if (obs) {
+                        if (idx == 1) {
+                            throw new IOException("Invalid *** position");
+                        }     
+                        final int last = lstLines.size() - 1;
+                        final String aux = lstLines.get(last) 
+                                                             + line[idx].trim();
+                        lstLines.set(last, aux);
+                    }
+                } else {
+                    lstLines.add(line[idx].trim());
+                }
+            }
+            ret.add(lstLines);
         }
-
+        
+        final ArrayList<ArrayList<String>> header = new ArrayList<>();
+        for (ArrayList<String> hdr : table.getHeader()) {
+            if (!hdr.get(0).equals("Obs")) {
+                header.add(hdr);
+            }
+        }
+        if (header.size() != ret.get(0).size()) {
+            throw new IOException("header size differs from data line size");
+        }
+        table.setHeader(header);
         table.setRow(row);
         table.setLines(ret);
     }
@@ -214,7 +248,7 @@ public class CSV_File {
         assert lines != null;
         assert table != null;
 
-        final List<String> sources = new ArrayList<>();
+        final ArrayList<String> sources = new ArrayList<>();
         final StringBuilder builder = new StringBuilder();
         boolean first = true;
 
@@ -256,6 +290,9 @@ public class CSV_File {
             }
             lines.remove();
         }
+        if (builder.length() > 0) {
+            sources.add(builder.toString());
+        }
 
         table.setSources(sources);
     }
@@ -265,7 +302,7 @@ public class CSV_File {
         assert lines != null;
         assert table != null;
 
-        final List<String> labels = new ArrayList<>();
+        final ArrayList<String> labels = new ArrayList<>();
         final StringBuilder builder = new StringBuilder();
         boolean first = true;
 
@@ -293,10 +330,13 @@ public class CSV_File {
                 }
                 if (!content.isEmpty()) { 
                     if (content.startsWith("*")) {
-                        labels.add(builder.toString());
-                        builder.setLength(0);
+                        if (builder.length() > 0) {
+                            labels.add(builder.toString());
+                            builder.setLength(0);
+                        }                        
+                    } else {
+                        builder.append(" ");
                     }
-                    builder.append(" ");
                     builder.append(content);
                 }
             }            
@@ -314,7 +354,7 @@ public class CSV_File {
         assert lines != null;
         assert table != null;
 
-        final List<String> notes = new ArrayList<>();
+        final ArrayList<String> notes = new ArrayList<>();
         final StringBuilder builder = new StringBuilder();
         boolean first = true;        
 
@@ -350,7 +390,7 @@ public class CSV_File {
         }
 
         table.setNotes(notes);
-    }
+    }        
     
     public static void main(final String[] args) throws IOException {
         final CSV_File csv = new CSV_File();

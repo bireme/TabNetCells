@@ -30,11 +30,10 @@ import java.util.Map;
 
 /**
  *
- * @author Heitor Barbierisymbols = new DecimalFormatSymbols(new Locale("pt", "BR"))
-
+ * @author Heitor Barbieri
  * date: 20130912
  */
-public class Cell {
+class Cell {
     static final NumberFormat NFMT = NumberFormat.getInstance(
                                                         new Locale("pt", "BR"));
     
@@ -50,93 +49,93 @@ public class Cell {
     private List<String> notes;
     private UrlElem elem;
 
-    public int getIdx() {
+    int getIdx() {
         return idx;
     }
 
-    public void setIdx(int idx) {
+    void setIdx(int idx) {
         this.idx = idx;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public void setTitle(final String title) {
+    void setTitle(final String title) {
         this.title = title;
     }
 
-    public String getSubtitle() {
+    String getSubtitle() {
         return subtitle;
     }
 
-    public void setSubtitle(final String subtitle) {
+    void setSubtitle(final String subtitle) {
         this.subtitle = subtitle;
     }
 
-    public List<String> getScope() {
+    List<String> getScope() {
         return scope;
     }
 
-    public void setScope(final List<String> scope) {
+    void setScope(final List<String> scope) {
         this.scope = scope;
     }
 
-    public List<String> getHeader() {
+    List<String> getHeader() {
         return header;
     }
 
-    public void setHeader(final List<String> header) {
+    void setHeader(final List<String> header) {
         this.header = header;
     }
 
-    public String getRow() {
+    String getRow() {
         return row;
     }
 
-    public void setRow(final String row) {
+    void setRow(final String row) {
         this.row = row;
     }
 
-    public String getValue() {
+    String getValue() {
         return value;
     }
 
-    public void setValue(final String value) {
+    void setValue(final String value) {
         final String nvalue = (value == null) ? null : 
                                                value.replaceAll("( +|\\+)", "");
         this.value = nvalue;
     }
 
-    public List<String> getSources() {
+    List<String> getSources() {
         return sources;
     }
 
-    public void setSources(final List<String> sources) {
+    void setSources(final List<String> sources) {
         this.sources = sources;
     }
 
-    public List<String> getLabels() {
+    List<String> getLabels() {
         return labels;
     }
 
-    public void setLabels(final List<String> labels) {
+    void setLabels(final List<String> labels) {
         this.labels = labels;
     }
 
-    public List<String> getNotes() {
+    List<String> getNotes() {
         return notes;
     }
 
-    public void setNotes(final List<String> notes) {
+    void setNotes(final List<String> notes) {
         this.notes = notes;
     }
 
-    public UrlElem getElem() {
+    UrlElem getElem() {
         return elem;
     }
 
-    public void setElem(final UrlElem elem) {
+    void setElem(final UrlElem elem) {
         this.elem = elem;
     }
 
@@ -232,7 +231,7 @@ public class Cell {
         return builder.toString();
     }
 
-    public String toHtml() {        
+    String toHtml() {        
         final StringBuilder builder = new StringBuilder();
 
         builder.append("<!DOCTYPE html>\n");

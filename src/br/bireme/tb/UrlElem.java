@@ -29,12 +29,12 @@ import java.util.Map;
  * @author Heitor Barbieri
  * date 20131008
  */
-public class UrlElem implements Comparable<UrlElem> {
-    public URL father; // url of the html page with the Qualif Record and csv links
-    public String fatherParams; // POST parameters
-    public Map<String, String> tableOptions; // def tables options
-    public URL csv; // url of the csv page
-    public URL qualifRec; // url of the Qualification Record page
+class UrlElem implements Comparable<UrlElem> {
+    URL father; // url of the html page with the Qualif Record and csv links
+    String fatherParams; // POST parameters
+    Map<String, String> tableOptions; // def tables options
+    URL csv; // url of the csv page
+    URL qualifRec; // url of the Qualification Record page
 
     @Override
     public int compareTo(final UrlElem other) {
