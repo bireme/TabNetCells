@@ -35,7 +35,7 @@ section.main{float:left;width:745px;}
 /* TABLE  */
 .tab-container{margin:25px 0;}
 table{width:100%; margin:10px 0; border:none; border:1px solid rgb(227,227,227); font-family:"Open Sans", Helvetica, Arial, Sans-Serif !important;}
-table caption{text-align:left;}
+table caption{text-align:left;margin-bottom: 18px;}
 table td{padding:2px 4px;}
 table thead{background:rgb(15,111,159) !important; color:rgb(255,255,255);}
 table thead tr th{font-weight:bold;}
@@ -44,7 +44,8 @@ table tr:nth-child(even) {background:rgb(227,227,227); color:rgb(49,49,49); }
 table tr:nth-child(odd) {background:rgb(255,255,255); color:rgb(49,49,49);}
 
 /* ASIDE */
-aside{float:right;width:200px;margin:25px 25px 25px 0;background:#E8F2F2;padding: 12px;}
+aside{float:right;width:200px;margin:25px 25px 25px 0;}
+aside ul {background:#E8F2F2;padding: 12px;margin-bottom:12px;}
 aside ul li{list-style-type:none;border-bottom:1px solid #C8DEF5;padding:4px 0;font-size: 90%;color:rgb(82,82,82);}
 aside ul li:first-child{border-top:1px solid #C8DEF5;}
 aside ul li label{font-weight:bold;}
