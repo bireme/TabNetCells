@@ -36,6 +36,12 @@ import java.util.regex.Pattern;
  * date 20131002
  */
 public class Utils {
+    /**
+     * Copies a directory from one location to another
+     * @param sourceLocation path of the directory to be copied
+     * @param targetLocation path of the destination of the copied directory
+     * @throws IOException 
+     */
     public static void copyDirectory(final File sourceLocation, 
                                      final File targetLocation) 
                                                             throws IOException {
@@ -63,8 +69,15 @@ public class Utils {
         }
     }
     
+    /**
+     * deletes recursevelly a directory
+     * @param file the path of the directory to be deleted
+     * @return  true is the directory was deleted or false if not
+     */
     public static boolean deleteFile(final File file) {
-        assert file != null;
+        if (file == null) {
+            throw new NullPointerException("file");
+        }
 
         boolean status = true;
 
@@ -76,10 +89,23 @@ public class Utils {
         return status && file.delete();
     }
     
+    /**
+     * Renames a file if the name alread exists. Add an index to the name. 
+     * xxxx.txt -> xxxx(1).txt
+     * xxxx(1).txt -> xxxx(2).txt
+     * @param path directory of the file
+     * @param fname file name
+     * @return a File object with the file name chenged
+     * @throws IOException 
+     */
     public static File renameFile(final File path,
                                   final String fname) throws IOException {
-        assert path != null;
-        assert fname != null;
+        if (path == null) {
+            throw new NullPointerException("path");
+        }
+        if (fname == null) {
+            throw new NullPointerException("fname");
+        }
         
         final int dotIndex = fname.lastIndexOf('.');
         final String prefix = (dotIndex == -1) ? fname 

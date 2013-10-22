@@ -34,7 +34,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Fill the template file holes with the TabNetCell cell data
  * @author Heitor Barbieri
  * date 20131002
  */
@@ -42,6 +42,7 @@ class RIPSA {
     private static final String TEMPLATE_FILE = "template/template.html";
     private static String TEMPLATE = null;
     
+    // Reads the template file only once
     static {
         final StringBuilder builder = new StringBuilder();
         final Path path = FileSystems.getDefault().getPath("", TEMPLATE_FILE);
@@ -59,6 +60,12 @@ class RIPSA {
         }
     }
     
+    /**
+     * Given a cell, uses its info tho fill the holes of the template String.
+     * @param cell a cell having the data to fill the holes
+     * @return a String with holes replaced
+     * @throws IOException 
+     */
     static String cell2html(final Cell cell) throws IOException {
         assert cell != null;
         

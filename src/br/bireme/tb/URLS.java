@@ -127,6 +127,13 @@ public class URLS {
         System.out.println("Files saved at: " + root.getAbsolutePath());
     }
     
+    /**
+     * Creates files associating each file with a table cell from a csv file
+     * @param url html file where the csv links will be recursively searched.
+     * @param root the output directory where the files will be created
+     * @return a list of new created file names
+     * @throws IOException 
+     */
     public static Set<String> generateCells(final String url,
                                             final File root) 
                                                             throws IOException {
@@ -150,6 +157,15 @@ public class URLS {
         return urls;
     }
 
+    /**
+     * Loads all cvs links from a root html page if possible otherwise find then
+     * recursively. Then the csv s will be loaded and the table cells will be
+     * saved at files.
+     * @param html root page where the csv will be searched
+     * @param root path where the files will be saved
+     * @return a list of new created file names
+     * @throws IOException 
+     */
     private static Set<String> loadCsvFromHtml(final URL html,
                                                final File root) 
                                                             throws IOException {
@@ -164,8 +180,9 @@ public class URLS {
     }
 
     /**
-     * Loads all cvs links from a html page if possible otherwise find then
-     * recursivelly
+     * Loads all cvs links from a root html page if possible otherwise find then
+     * recursively. Then the csv s will be loaded and the table cells will be
+     * saved at files.
      * @param html
      * @param postParam
      * @param tableOptions
@@ -272,6 +289,14 @@ public class URLS {
         return ret;
     }
     
+    /**
+     * Given a table, generates all of its cells and save each one into a file
+     * @param table table used to generate cells
+     * @param elem 
+     * @param root root directory where the files will be created
+     * @param urls
+     * @param tableNum table number used to create the file name
+     */
     private static void genCellsFromTable(final Table table,
                                           final UrlElem elem,
                                           final File root,
@@ -318,6 +343,12 @@ public class URLS {
         }
     }
         
+    /**
+     * Returns only labels related with a given cell value
+     * @param cellValue the cell value (ending with stars ***)
+     * @param labels all labels of a table
+     * @return  only labels with the right number of stars.
+     */
     private static List<String> adjustLabel(final String cellValue,
                                             final List<String> labels) {
         assert cellValue != null;
@@ -513,6 +544,14 @@ public class URLS {
                                                            response.toString()};
     }
 
+    /**
+     * Looks for html and/or def links inside a html page.
+     * @param url the url of the html page where to look for links
+     * @param content the html page content
+     * @param history a set of links already searched. Avoid cyclic searchs
+     * @return a set if html and/or def links found inside a page.
+     * @throws IOException 
+     */
     private static Set<URL> getPageDefHtmlUrls(final URL url,
                                                final String content,
                                                final Set<URL> history)
@@ -562,6 +601,15 @@ public class URLS {
         return ret;
     }
         
+    /**
+     * Saves a cell info into a file
+     * @param cell cell to be saved
+     * @param rootDir directory where the file will be created
+     * @param tableNum the table number to be used to create the file name
+     * @return the new created file name. Where path is composed by cells edition
+     * + qualification record category + file name.
+     * @throws IOException 
+     */
     private static String saveToFile(final Cell cell,
                                      final File rootDir,
                                      final int tableNum) throws IOException {
@@ -596,6 +644,13 @@ public class URLS {
         return edition + "/" + qualRec + "/" + cfname;
     }
 
+    /**
+     * Given a cell object, saves it into a file
+     * @param cell the object info to be saved
+     * @param path the path where the file will be created
+     * @param fname file name
+     * @throws IOException 
+     */
     private static void saveToRipsaFile(final Cell cell,
                                         final File path,
                                         final String fname) throws IOException {
@@ -616,6 +671,11 @@ public class URLS {
         }        
     }
     
+    /**
+     * Some html pages warns why they not have csv links inside header marks
+     * @param content the html page content
+     * @return the warning message
+     */
     private static String findErrorMessage(final String content) {
         assert content != null;
         
@@ -625,7 +685,16 @@ public class URLS {
         return mat.find() ? mat.group(2) : "";
     }
 
+    private static final void usage() {
+        System.err.println("usage: URLS <outputDir>");
+        System.exit(1);
+    }
+    
     public static void main(final String[] args) throws IOException {
+        if (args.length != 1) {
+            usage();
+        }
+        
         final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
         final FileHandler fh = new FileHandler("TabNetCells.log", false);  
         logger.addHandler(fh); 

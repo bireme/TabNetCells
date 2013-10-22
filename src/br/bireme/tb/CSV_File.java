@@ -36,7 +36,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * Converts a csv file into a Table object
  * @author Heitor Barbieri
  * date: 20130819
  */
@@ -44,6 +44,14 @@ class CSV_File {
     private static final Pattern LABEL_PAT =
                                           Pattern.compile("\\s*\\*+\\s*");
 
+    /**
+     * Parses a csv file and converts it into a Table object
+     * @param csv comma separated value file to be parsed
+     * @param encoding file encoding
+     * @param separator field separator character
+     * @return the Table object
+     * @throws IOException 
+     */
     Table parse(final File csv,
                 final String encoding,
                 final char separator) throws IOException {
@@ -62,6 +70,13 @@ class CSV_File {
         return parse0(myEntries);
     }
 
+    /**
+     * Parses a csv String and converts it into a Table object
+     * @param csv comma separated value file to be parsed
+     * @param separator field separator character
+     * @return the Table object
+     * @throws IOException 
+     */
     Table parse(final String csv,
                 final char separator) throws IOException {
         if (csv == null) {
@@ -76,6 +91,12 @@ class CSV_File {
         return parse0(myEntries);
     }
 
+    /**
+     * Parses the csv line elements seaching for Table elements.
+     * @param myEntries list of string of csv fields as returned by raw csv parser
+     * @return The Table object
+     * @throws IOException 
+     */
     private Table parse0(final List<String[]> myEntries) throws IOException {
         assert myEntries != null;
 

@@ -51,6 +51,9 @@ class DEF_File {
     private static final Pattern OPTION_PATTERN = Pattern.compile(
                            "(?i)<OPTION.+?VALUE=\"([^\"]+)\".*?>(.+?)(<|\n|$)");
     
+    /**
+     * Pssible values of a selectable options table
+     */
     class SelectableOptions {
         String label;
         String name;
@@ -82,7 +85,7 @@ class DEF_File {
             throw new NullPointerException("url");
         }
         final Set<DefUrls> set = new HashSet<>();
-        final String content = new URLS().loadPageGet(url)[1];
+        final String content = URLS.loadPageGet(url)[1];
         final Map<String,SelectableOptions> selectOpts = getSelectOptions(content);
         final Set<Map<String,Map.Entry<String,String>>> postOpts = 
                                                 generatePostOptions(selectOpts);

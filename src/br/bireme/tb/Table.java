@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Represents a TabNet table of data
  * @author Heitor Barbieri
  * date 20130911
  */
@@ -34,13 +34,13 @@ class Table {
     private String title;
     private String subtitle;
     private ArrayList<String> scope;
-    private String rowHeader;
-    private ArrayList<ArrayList<String>> header;
-    private ArrayList<String> row;
-    private ArrayList<ArrayList<String>> lines;
-    private ArrayList<String> sources;
-    private ArrayList<String> labels;
-    private ArrayList<String> notes;
+    private String rowHeader; // label at rowXcolumn
+    private ArrayList<ArrayList<String>> header; // label of each column
+    private ArrayList<String> row; // label of each data line
+    private ArrayList<ArrayList<String>> lines; // line of the table data
+    private ArrayList<String> sources; // table other info
+    private ArrayList<String> labels;  // table other info
+    private ArrayList<String> notes;   // table other info
 
     String getTitle() {
         return title;

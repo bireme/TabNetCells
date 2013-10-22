@@ -29,7 +29,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- *
+ * Represents a cell of a TabNet table
  * @author Heitor Barbieri
  * date: 20130912
  */
@@ -37,7 +37,7 @@ class Cell {
     static final NumberFormat NFMT = NumberFormat.getInstance(
                                                         new Locale("pt", "BR"));
     
-    private int idx;
+    private int idx; // order number of the cell inside a table
     private String title;
     private String subtitle;
     private List<String> scope;
@@ -47,7 +47,7 @@ class Cell {
     private List<String> sources;
     private List<String> labels;
     private List<String> notes;
-    private UrlElem elem;
+    private UrlElem elem; // low level info
 
     int getIdx() {
         return idx;

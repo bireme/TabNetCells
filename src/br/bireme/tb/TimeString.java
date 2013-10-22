@@ -24,7 +24,7 @@ package br.bireme.tb;
 import java.util.GregorianCalendar;
 
 /**
- *
+ * Calculates the elapsed time between two events
  * @author Heitor Barbieri
  * date 20131002
  */
@@ -38,10 +38,17 @@ public class TimeString {
 
     long beginTime = 0;
 
+    /**
+     * Indicates the moment that a event started.
+     */
     public void start() {
         beginTime = new GregorianCalendar().getTimeInMillis();
     }
 
+    /**
+     * Indicates the moment that a event finished.
+     * @return the elapsed time between now and start()
+     */
     public String getTime() {
         if (beginTime == 0) {
             throw new IllegalArgumentException(
