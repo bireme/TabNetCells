@@ -69,12 +69,21 @@ class DEF_File {
         
         @Override
         public int compareTo(final DefUrls other) {
-            final int ret;
+            int ret;
                                                 
             if (url == null) {                
                 ret = ((other == null) || (other.url == null)) ? 0 : -1;
             } else {
                 ret = (other == null) ? +1 : url.compareTo(other.url);
+                if (ret == 0) {
+                    if (postParams == null) {
+                        if (other.postParams != null) {
+                            ret = -1;
+                        }
+                    } else {
+                        ret = postParams.compareTo(other.postParams);
+                    }
+                }
             }
             return ret;
         }
@@ -84,7 +93,7 @@ class DEF_File {
         if (url == null) {
             throw new NullPointerException("url");
         }
-        final Set<DefUrls> set = new HashSet<>();
+        final Set<DefUrls> set = new TreeSet<>();
         final String content = URLS.loadPageGet(url)[1];
         final Map<String,SelectableOptions> selectOpts = getSelectOptions(content);
         final Set<Map<String,Map.Entry<String,String>>> postOpts = 

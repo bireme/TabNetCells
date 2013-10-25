@@ -34,6 +34,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -240,9 +241,11 @@ public class URLS {
                         try {
                             final String[] csvpage = loadPageGet(elem.csv);
                             final CSV_File csv = new CSV_File();
-                            final Table table = csv.parse(csvpage[1], CSV_SEPARATOR);
+                            final Table table = csv.parse(csvpage[1], 
+                                                                 CSV_SEPARATOR);
 
-                            genCellsFromTable(table, elem, root, setUrls, ++ret[0]);
+                            genCellsFromTable(table, elem, root, setUrls, 
+                                                                      ++ret[0]);
                             ret[1] = 1;
                         } catch (Exception ex) {
                             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
@@ -269,7 +272,7 @@ public class URLS {
                                                                  history, root);                                
                             } else {
                                 aux = loadCsvFromHtml(url, null, 
-                                                 null, ret[0], level + 1, setUrls, 
+                                               null, ret[0], level + 1, setUrls, 
                                                                  history, root);
                             }
                             ret[0] = aux[0];
@@ -500,7 +503,8 @@ public class URLS {
         if (urlParameters == null) {
             throw new NullPointerException("urlParameters");
         }
-        final String encodedParams = URLEncoder.encode(urlParameters, DEFAULT_ENCODING);
+        final String encodedParams = URLEncoder.encode(urlParameters, 
+                                                              DEFAULT_ENCODING);
 //System.out.print("loading page (POST): [" + url + "] params: " + urlParameters);
 
         //Create connection
@@ -685,18 +689,48 @@ public class URLS {
         return mat.find() ? mat.group(2) : "";
     }
 
+    private static String getLogFileName(final String logDir) {
+        assert logDir != null;
+        
+        final Calendar cal = Calendar.getInstance();
+        final StringBuilder builder = new StringBuilder(logDir);
+        final char last = logDir.charAt(logDir.length() - 1);
+        
+        if ((last != '/') && (last != '\\')) {
+            builder.append('/');
+        }
+        builder.append(cal.get(Calendar.YEAR));
+        builder.append(cal.get(Calendar.MONTH));
+        builder.append(cal.get(Calendar.DAY_OF_MONTH));
+        builder.append(cal.get(Calendar.HOUR_OF_DAY));
+        builder.append(cal.get(Calendar.MINUTE));
+        builder.append(cal.get(Calendar.SECOND));
+        builder.append(".log");
+        
+        return builder.toString();
+    }
+    
     private static final void usage() {
         System.err.println("usage: URLS <outputDir>");
         System.exit(1);
     }
     
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {                
         if (args.length != 1) {
             usage();
         }
         
+        final String LOG_DIR = "log";
+        final File logDir = new File(LOG_DIR);
+        if (!logDir.exists()) {
+            if (!logDir.mkdir()) {
+                throw new IOException("log directory [" + LOG_DIR + 
+                                                            "] creation error");
+            }
+        }
+        
         final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-        final FileHandler fh = new FileHandler("TabNetCells.log", false);  
+        final FileHandler fh = new FileHandler(getLogFileName(LOG_DIR), false);  
         logger.addHandler(fh); 
         
         final String URL = URLS.ROOT_URL;
