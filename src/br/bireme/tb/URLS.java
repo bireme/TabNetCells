@@ -710,7 +710,7 @@ public class URLS {
         return builder.toString();
     }
     
-    private static final void usage() {
+    private static void usage() {
         System.err.println("usage: URLS <outputDir>");
         System.exit(1);
     }
@@ -720,6 +720,8 @@ public class URLS {
             usage();
         }
         
+        final String out = args[0].trim();
+        final String outDir = (out.endsWith("/")) ? out : out + "/";
         final String LOG_DIR = "log";
         final File logDir = new File(LOG_DIR);
         if (!logDir.exists()) {
@@ -737,7 +739,7 @@ public class URLS {
         final TimeString time = new TimeString();
 
         time.start();
-        generateFileStructure(URL, "TabNetCells");
+        generateFileStructure(URL, outDir + "celulasIDB");
         
         System.out.println("Total time: " + time.getTime());
     }

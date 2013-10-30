@@ -1,0 +1,60 @@
+ Processamento do TabNetCells (CelulasIDB)    (20131101)
+
+a) Objetivo: Gerar arquivos html a partir das tabelas do IDB/TabNet/DATASUS (um
+arquivo para cada célula de uma tabela).
+
+b) Peridiocidade do processamento: toda vez que houver atualização no site do idb
+(http://www.datasus.gov.br/idb) - a peridiocidade esperada de atualização é a 
+anual.
+
+c) Máquina de processamento: serverofi4.bireme.br
+
+d) Diretório de processamento: serverofi4:/usr/local/bireme/java/TabNetCells
+
+e) Diretório onde os arquivos de saída serão gravados: 
+                                              serverofi4:/bases/ripsa/celulasIDB
+
+f) Etapas para a execução do processamento: 
+
+  Etapa 1:
+  1.1) Ir para o diretório de processamento (item d)
+
+  1.2) Executar o script 'gera.sh' que tem como parâmetro o diretório de saída
+     (item e)  ->    ./gera.sh <outDir>
+
+  Como resultado espera-se no diretório de saída o arquivo index.html o
+  diretório (ed<num>) contendo vários subdiretórios com os arquivos html e os
+  diretórios css e img.
+
+  Etapa 2:
+  2.1) Apagar o diretório http://www.homolog.ripsa.org.br/celulasIDB/ no
+       servidor de homologação (hm01dx.bireme.br)
+
+  2.2) Copiar o arquivo 'index.html' e os diretórios 'ed<num>', 'css' e 'img'
+       do diretório de saída (item e) para o servidor de homologação 
+       (hm01dx.bireme.br) no diretório
+       hm01dx:/home/aplicacoes-bvs/ripsa/htdocs/celulasIDB
+
+  Como resultado, espera-se poder ver o arquivo index.html na url 
+  http://www.homolog.ripsa.org.br/celulasIDB/index.html
+
+  Etapa 3:
+  Avisar a Juliana Sousa que os arquivos estão disponíveis para verificação de
+  conteúdo.
+
+  Etapa 4:
+  4.1) Quando receber OK da Juliana, informar o ITI para copiar os arquivos para 
+       o servidor de produção e também executar neste servidor o script 
+       'activate_analytics.sh' no diretório de processamento (item d) que tem 
+       como parâmetro o diretório de saída (item e)  ->    
+       ./activate_analytics.sh <outDir>
+
+  4.2) Avisar a Juliana sobre o termino do processamento.
+
+  Como resultado, espera-se poder ver o arquivo index.html na url 
+  http://www.ripsa.org.br/celulasIDB/index.html
+
+
+Observação: Para checar a periodicidade da atualização, pode-se escrever um
+script que use como base o script 'gera_email.sh' presente no diretório de
+processamento (item d)

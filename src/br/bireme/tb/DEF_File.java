@@ -206,32 +206,58 @@ class DEF_File {
         line.options.remove(YEAR);
         
         for (Map.Entry<String,String> lineElem : line.options.entrySet()) {
-            for (Map.Entry<String,String> contentElem : 
+            for (Map.Entry<String,String> colElem : 
+                                     filterOptions(columm.options).entrySet()) {
+                if (lineElem.getKey().equals(colElem.getKey())) {
+                    continue;
+                }
+                for (Map.Entry<String,String> contentElem : 
                                                    content.options.entrySet()) {
-                for (Map.Entry<String,String> timeElem : 
+                    for (Map.Entry<String,String> timeElem : 
                                                       time.options.entrySet()) {
-                    final Map<String,Map.Entry<String,String>> map = 
+                        final Map<String,Map.Entry<String,String>> map = 
                                                                 new HashMap<>();
-                    map.put(line.name, lineElem);
-                    map.put(columm.name, new AbstractMap.SimpleEntry<>
-                                                (NOT_ACTIVE, NOT_ACTIVE_LABEL));
-                    map.put(content.name, contentElem);
-                    map.put(time.name, timeElem);
-                    for (Map.Entry<String,SelectableOptions> entry : 
+                        map.put(line.name, lineElem);
+                        map.put(columm.name, colElem);
+                        map.put(content.name, contentElem);
+                        map.put(time.name, timeElem);
+                        for (Map.Entry<String,SelectableOptions> entry : 
                                                      selectOptions.entrySet()) {
-                        final String id = entry.getKey();
-                        if ((!id.equals("L")) && (!id.equals("C")) && 
-                            (!id.equals("I")) && (!id.equals("A"))) {
-                            map.put(entry.getValue().name, 
-                              new AbstractMap.SimpleEntry<>(ALL_CATEGORIES,
+                            final String id = entry.getKey();
+                            if ((!id.equals("L")) && (!id.equals("C")) && 
+                                (!id.equals("I")) && (!id.equals("A"))) {
+                                map.put(entry.getValue().name, 
+                                  new AbstractMap.SimpleEntry<>(ALL_CATEGORIES,
                                                          ALL_CATEGORIES_LABEL));
+                            }
                         }
+                        set.add(map);
                     }
-                    set.add(map);
                 }
             }
         }
         return set;
+    }
+    
+    private Map<String,String> filterOptions(final Map<String,String> in) {
+        assert in != null;
+        
+        final Map<String,String> optMap = new HashMap<>();
+        final Set<String> keys = new HashSet<>();
+        
+        keys.add("Unidade_da_Federação");
+        keys.add("Região");
+        keys.add("Região_Metropolitana");
+        keys.add("Capital");
+        keys.add("Região_e_Unidade_da_Federação");
+        keys.add("Ano");
+        
+        for (Map.Entry<String,String> elem : in.entrySet()) {
+            if (!keys.contains(elem.getKey())) {
+                optMap.put(elem.getKey(), elem.getValue());
+            }
+        }
+        return optMap;
     }
     
     private String getFormTarget(final String content) throws IOException {

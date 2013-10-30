@@ -242,6 +242,8 @@ class CSV_File {
                         final String aux = lstLines.get(last) 
                                                              + line[idx].trim();
                         lstLines.set(last, aux);
+                    } else {
+                        lstLines.add(line[idx].trim());
                     }
                 } else {
                     lstLines.add(line[idx].trim());
