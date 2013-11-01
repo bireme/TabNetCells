@@ -32,9 +32,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -46,6 +48,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 /**
  *
@@ -55,10 +58,15 @@ import java.util.regex.Pattern;
 public class URLS {
     public static final String ROOT_URL = "http://www.datasus.gov.br/idb";
     //public static final String ROOT_URL = "http://tabnet.datasus.gov.br/cgi/idb2011/matriz.htm";
+    
+    public static final String OUT_SITE_URL = "http://www.ripsa.org.br/celulasIDB";
 
     public static final String DEFAULT_ENCODING = "ISO8859-1";
     
     public static final char CSV_SEPARATOR = ';';
+    
+    public static final Pattern EDITION_PAT = Pattern.compile(
+           "\\?node=([^\\&]+)\\&lang=\\w+\\&version=([^\\s]+)");
     
     private static final Pattern CSV_PATTERN = Pattern.compile(
                                          "(?i)<a href=\"?([^\\.\n]+?.csv)\"?>");
@@ -72,8 +80,6 @@ public class URLS {
     
     private static final Pattern REFUSE_PAT =
                                           Pattern.compile("\\s*[\\.\\*]+\\s*");
-    private static final Pattern EDITION_PAT = Pattern.compile(
-           "\\?node=([^\\&]+)\\&lang=\\w+\\&version=([^\\s]+)");
 
     public static void generateFileStructure(final String url,
                                              final String rootDir)
@@ -103,21 +109,28 @@ public class URLS {
         final Set<String> files = generateCells(url, root);
         System.out.println("Total cell files created: " + files.size());
 
+        try {
+            createAllSitemap(files, root);
+        } catch (IOException ioe) {
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE,
+                                           "Sitemap file creation error.", ioe);
+        }   
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(
                                                new File(root, "index.html")))) {
             writer.append("<!DOCTYPE html>\n");
             writer.append("<html>\n");
             writer.append(" <head>\n");
-            writer.append("  <meta charset=\"UTF-8\">\n");
+            writer.append(" <meta charset=\"UTF-8\">\n");
             writer.append(" </head>\n");
             writer.append(" <body>\n");
-            writer.append("  <h1>Fichas de Qualificação</h1>\n");
+            writer.append(" <h1>Fichas de Qualificação</h1>\n");
             for (String path : files) {
-                writer.append("  <ul>\n");
-                writer.append("   <li>\n");
-                writer.append("    <a href=\"" + path + "\">" + path +"</a>\n");
-                writer.append("   </li>\n");
-                writer.append("  </ul>\n");
+                writer.append(" <ul>\n");
+                writer.append(" <li>\n");
+                writer.append(" <a href=\"" + path + "\">" + path +"</a>\n");
+                writer.append(" </li>\n");
+                writer.append(" </ul>\n");
             }
             writer.append(" </body>\n");
             writer.append("</html>\n");
@@ -125,6 +138,7 @@ public class URLS {
             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE,
                                              "Index file creation error.", ioe);
         }
+         
         System.out.println("Files saved at: " + root.getAbsolutePath());
     }
     
@@ -621,19 +635,21 @@ public class URLS {
         assert rootDir != null;
         assert tableNum > 0;
 
-        final String father = cell.getElem().father.toString();
+        //final String father = cell.getElem().father.toString();
         final String url = cell.getElem().qualifRec.toString();
         final Matcher mat = EDITION_PAT.matcher(url);
         if (!mat.find()) {
             throw new IOException("out of pattern url [" + url + "]");
         }
         final String qualRec = mat.group(1);
-        final String edition = mat.group(2);
+        final String uQualRec = qualRec.toUpperCase();
+        /*final String edition = mat.group(2);
         final int idx1 = father.lastIndexOf('/');
-        final int idx2 = father.lastIndexOf('.');
-        final String fname = father.substring(idx1 + 1, idx2) + "_tb"
-                                             + tableNum + "_ce" + cell.getIdx();
-        final File path = new File(rootDir, "/" + edition + "/" + qualRec);
+        final int idx2 = father.lastIndexOf('.');*/
+        //final String category = father.substring(idx1 + 1, idx2);
+        final String fname = qualRec + "_tb" + tableNum + "_ce" + cell.getIdx();
+        final File path = new File(rootDir, "/" + uQualRec.charAt(0) + "/" 
+                                                                    + uQualRec);
         final String spath = path.getPath();
         final String cfname = fname + ".html";
 
@@ -645,7 +661,7 @@ public class URLS {
         }
         saveToRipsaFile(cell, path, cfname);
 
-        return edition + "/" + qualRec + "/" + cfname;
+        return uQualRec.charAt(0) + "/" + uQualRec + "/" + cfname;
     }
 
     /**
@@ -692,22 +708,121 @@ public class URLS {
     private static String getLogFileName(final String logDir) {
         assert logDir != null;
         
-        final Calendar cal = Calendar.getInstance();
+        final String date = new SimpleDateFormat("yyyyMMddHHmmss")
+                                                            .format(new Date());
         final StringBuilder builder = new StringBuilder(logDir);
         final char last = logDir.charAt(logDir.length() - 1);
         
         if ((last != '/') && (last != '\\')) {
             builder.append('/');
         }
-        builder.append(cal.get(Calendar.YEAR));
-        builder.append(cal.get(Calendar.MONTH));
-        builder.append(cal.get(Calendar.DAY_OF_MONTH));
-        builder.append(cal.get(Calendar.HOUR_OF_DAY));
-        builder.append(cal.get(Calendar.MINUTE));
-        builder.append(cal.get(Calendar.SECOND));
+        builder.append(date);
         builder.append(".log");
         
         return builder.toString();
+    }
+           
+    private static void createAllSitemap(final Set<String> files,
+                                         final File root) throws IOException {        
+        assert files != null;
+        assert root != null;
+        
+        final Map<String,Set<String>> map = createMapFiles(files);
+        
+        createSitemapIndex(map, root);
+        createSitemap(map, root);        
+    }
+    
+    private static Map<String,Set<String>> createMapFiles(
+                                   final Set<String> files) throws IOException {
+        assert files != null;
+        
+        final Map<String,Set<String>> cells = new HashMap<>();
+        
+        for (String fpath : files) {
+            final String[] split = fpath.split("/", 2);
+            if (split.length != 3) {
+                throw new IOException("invalid file name: [" + fpath + "]");
+            }
+            Set<String> names = cells.get(split[1]);
+            if (names == null) {
+                names = new HashSet<>();
+                cells.put(split[1], names);
+            }
+            names.add(split[2]);
+        }        
+        return cells;
+    }
+    
+    private static void createSitemapIndex(
+                                       final Map<String,Set<String>> categories,
+                                       final File root) throws IOException {        
+        assert categories != null;
+        assert root != null;
+        
+        final String lastmod = new SimpleDateFormat("yyyy-MM-dd")
+                                                            .format(new Date());
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+                new File(root, "sitemapindex.xml")))) {
+            writer.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+            writer.append("\t<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n");
+            for (String cat : categories.keySet()) {
+                writer.append("\t<sitemap>\n");
+                writer.append("\t\t<loc>");
+                writer.append(OUT_SITE_URL);
+                writer.append("/");
+                writer.append(cat.charAt(0));
+                writer.append("/");
+                writer.append(cat);
+                writer.append("/sitemap_");
+                writer.append(cat);
+                writer.append(".xml</loc>\n");
+                writer.append("\t\t<lastmod>");
+                writer.append(lastmod);
+                writer.append("</lastmod>\n");
+                writer.append("\t</sitemap>\n");
+            }
+            writer.append("</sitemapindex>\n");
+        }
+    }
+    
+    private static void createSitemap(final Map<String,Set<String>> categories,
+                                      final File root) throws IOException {        
+        assert categories != null;
+        assert root != null;
+        
+        final String lastmod = new SimpleDateFormat("yyyy-MM-dd")
+                                                            .format(new Date());
+        for (Map.Entry<String,Set<String>> entry : categories.entrySet()) {
+            final String cat = entry.getKey();
+            final String fname = cat.charAt(0) + "/" + cat + "/sitemap_" 
+                                                            + cat + ".xml";
+            
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+                                                      new File(root, fname)))) {
+                writer.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+                writer.append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n");
+                for (String fname2 : entry.getValue()) {
+                    writer.append("\t<url>\n");
+                    writer.append("\t\t<loc>");
+                    writer.append(OUT_SITE_URL);
+                    writer.append("/");
+                    writer.append(cat.charAt(0));
+                    writer.append("/");
+                    writer.append(cat);
+                    writer.append("/");
+                    writer.append(StringEscapeUtils.escapeHtml4(
+                                           URLEncoder.encode(fname2, "UTF-8")));
+                    writer.append("</loc>\n");
+                    writer.append("\t\t<lastmod>");
+                    writer.append(lastmod);
+                    writer.append("</lastmod>\n");
+                    writer.append("\t\t<changefreq>monthly</changefreq>\n");
+                    writer.append("\t</url>\n");
+                }
+                writer.append("</urlset>");
+            }
+        }
     }
     
     private static void usage() {

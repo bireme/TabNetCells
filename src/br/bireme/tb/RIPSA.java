@@ -22,6 +22,7 @@
 package br.bireme.tb;
 
 import static br.bireme.tb.Cell.NFMT;
+import static br.bireme.tb.URLS.EDITION_PAT;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
@@ -32,6 +33,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 /**
  * Fill the template file holes with the TabNetCell cell data
@@ -72,13 +76,26 @@ class RIPSA {
         if (TEMPLATE == null) {
             throw new IOException("TEMPLATE is null");
         }
+        final String qualifRec = cell.getElem().qualifRec.toString();
+        final Matcher mat = EDITION_PAT.matcher(qualifRec);
+        if (!mat.find()) {
+            throw new IOException("out of pattern url [" + qualifRec + "]");
+        }
+        final String edition = mat.group(2);
+        final String father = cell.getElem().father.toString();
+        final Matcher matf = Pattern.compile("idb(\\d{4})").matcher(father);
+        if (!matf.find()) {
+            throw new IOException("out of pattern url [" + father + "]");
+        }
+        final String year = matf.group(1);
         
-        String str = (TEMPLATE == null) ? "" : TEMPLATE;
+        String str = TEMPLATE;
         final StringBuilder builder = new StringBuilder();
         boolean first;
-
+        
         final String title = cell.getTitle();
-        str = str.replace("$$title$$", (title == null) ? "" : title);
+        final String title2 = (title == null) ? "" : title;
+        str = str.replace("$$title$$", title2);
         
         final String subtitle = cell.getSubtitle();
         if ((subtitle != null) && (!subtitle.isEmpty())) {
@@ -86,6 +103,19 @@ class RIPSA {
         } else {
             str = str.replace("$$subtitle$$", "");
         }
+        
+        str = str.replace("$$description$$", "Células IDB - " + edition + " - " 
+                                   + year + " - " + title2 + " - " + subtitle);
+        
+        final StringBuilder aux = new StringBuilder(title);
+        for (String opt : cell.getElem().tableOptions.values()) {
+            if ((!opt.equals("Não ativa")) && 
+                (!opt.equals("Todas as categorias"))) {
+                aux.append(", ");
+                aux.append(StringEscapeUtils.unescapeHtml4(opt));
+            }
+        }
+        str = str.replace("$$keywords$$", aux.toString());
         
         final List<String> scope = cell.getScope();
         builder.setLength(0);
