@@ -116,7 +116,7 @@ public class URLS {
                                            "Sitemap file creation error.", ioe);
         }   
         
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+        try (final BufferedWriter writer = new BufferedWriter(new FileWriter(
                                                new File(root, "index.html")))) {
             writer.append("<!DOCTYPE html>\n");
             writer.append("<html>\n");
@@ -125,13 +125,13 @@ public class URLS {
             writer.append(" </head>\n");
             writer.append(" <body>\n");
             writer.append(" <h1>Fichas de Qualificação</h1>\n");
-            for (String path : files) {
-                writer.append(" <ul>\n");
+            writer.append(" <ul>\n");
+            for (String path : files) {                
                 writer.append(" <li>\n");
                 writer.append(" <a href=\"" + path + "\">" + path +"</a>\n");
                 writer.append(" </li>\n");
-                writer.append(" </ul>\n");
             }
+            writer.append(" </ul>\n");            
             writer.append(" </body>\n");
             writer.append("</html>\n");
         } catch (IOException ioe) {
@@ -544,7 +544,7 @@ public class URLS {
 
         //Get Response
         final StringBuffer response = new StringBuffer();
-        try (BufferedReader rd = new BufferedReader(
+        try (final BufferedReader rd = new BufferedReader(
                       new InputStreamReader(connection.getInputStream(),
                                                            DEFAULT_ENCODING))) {
             while (true) {
@@ -678,14 +678,14 @@ public class URLS {
         assert path != null;
         assert fname != null;
 
-        File file = new File(path, fname);
+        final File file = new File(path, fname);
         final String content = RIPSA.cell2html(cell);
         
         if (file.exists()) {
             throw new IOException("File[" + file.getPath() 
                                                           + "] already exists");
         }
-        try (BufferedWriter writer = new BufferedWriter(
+        try (final BufferedWriter writer = new BufferedWriter(
                                        new FileWriter(file))) {
             writer.append(content);
         }        
@@ -740,7 +740,7 @@ public class URLS {
         final Map<String,Set<String>> cells = new HashMap<>();
         
         for (String fpath : files) {
-            final String[] split = fpath.split("/", 2);
+            final String[] split = fpath.split("/", 3);
             if (split.length != 3) {
                 throw new IOException("invalid file name: [" + fpath + "]");
             }
@@ -762,7 +762,7 @@ public class URLS {
         
         final String lastmod = new SimpleDateFormat("yyyy-MM-dd")
                                                             .format(new Date());
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+        try (final BufferedWriter writer = new BufferedWriter(new FileWriter(
                 new File(root, "sitemapindex.xml")))) {
             writer.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
             writer.append("\t<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n");
@@ -798,11 +798,11 @@ public class URLS {
             final String fname = cat.charAt(0) + "/" + cat + "/sitemap_" 
                                                             + cat + ".xml";
             
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(
+            try (final BufferedWriter writer = new BufferedWriter(new FileWriter(
                                                       new File(root, fname)))) {
                 writer.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
                 writer.append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n");
-                for (String fname2 : entry.getValue()) {
+                for (final String fname2 : entry.getValue()) {
                     writer.append("\t<url>\n");
                     writer.append("\t\t<loc>");
                     writer.append(OUT_SITE_URL);

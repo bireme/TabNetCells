@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2013-11-01T11:44:09</date>
+  <millis>1383313449523</millis>
+  <sequence>0</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message>skipping file: http://tabnet.datasus.gov.br/cgi/idb2011/e20.csv</message>
+  <exception>
+    <message>java.lang.NullPointerException</message>
+    <frame>
+      <class>br.bireme.tb.RIPSA</class>
+      <method>cell2html</method>
+      <line>111</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>saveToRipsaFile</method>
+      <line>682</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>saveToFile</method>
+      <line>662</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>genCellsFromTable</method>
+      <line>352</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>loadCsvFromHtml</method>
+      <line>261</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>loadCsvFromHtml</method>
+      <line>288</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>loadCsvFromHtml</method>
+      <line>190</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>generateCells</method>
+      <line>162</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>generateFileStructure</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>main</method>
+      <line>857</line>
+    </frame>
+  </exception>
+</record>

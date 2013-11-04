@@ -108,11 +108,15 @@ class RIPSA {
                                    + year + " - " + title2 + " - " + subtitle);
         
         final StringBuilder aux = new StringBuilder(title);
-        for (String opt : cell.getElem().tableOptions.values()) {
-            if ((!opt.equals("Não ativa")) && 
-                (!opt.equals("Todas as categorias"))) {
-                aux.append(", ");
-                aux.append(StringEscapeUtils.unescapeHtml4(opt));
+        final Map<String, String> tableOptions = cell.getElem().tableOptions;
+        
+        if ((tableOptions != null) && (!tableOptions.isEmpty())) {
+            for (String opt : tableOptions.values()) {
+                if ((!opt.equals("Não ativa")) && 
+                    (!opt.equals("Todas as categorias"))) {
+                    aux.append(", ");
+                    aux.append(StringEscapeUtils.unescapeHtml4(opt));
+                }
             }
         }
         str = str.replace("$$keywords$$", aux.toString());
@@ -224,21 +228,14 @@ class RIPSA {
         str = str.replace("$$father$$", cell.getElem().father.toString());
         str = str.replace("$$qualifRec$$", cell.getElem().qualifRec.toString());
         
-        final Map<String,String> tableOptions = cell.getElem().tableOptions;
         builder.setLength(0);
-        first = true;
         if ((tableOptions != null) && (!tableOptions.isEmpty())) {
             str = str.replace("$$tableHeader$$", "<strong>Filtros usados para a"
             + " geração da tabela de dados do TabNet</strong>\n<ul>\n");
             /*str = str.replace("$$tableHeader$$", "<strong>Tabela de dados do "
                       + "TabNet gerada com os seguintes filtros:</strong><br/><br/>");*/
             for (Map.Entry<String,String> option : tableOptions.entrySet()) {
-                if (first) {
-                    first = false;
-                } else {
-                    builder.append("\t\t\t\t\t\t");
-                }
-                builder.append("<li><label>");
+                builder.append("\t\t\t\t\t\t<li><label>");
                 builder.append(option.getKey());
                 builder.append(":</label> ");
                 builder.append(option.getValue());
