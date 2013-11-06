@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2013-11-05T11:42:22</date>
+  <millis>1383658942757</millis>
+  <sequence>0</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:23</date>
+  <millis>1383658943160</millis>
+  <sequence>1</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:23</date>
+  <millis>1383658943520</millis>
+  <sequence>2</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Faixa_etária&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:23</date>
+  <millis>1383658943884</millis>
+  <sequence>3</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:24</date>
+  <millis>1383658944272</millis>
+  <sequence>4</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:24</date>
+  <millis>1383658944678</millis>
+  <sequence>5</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:25</date>
+  <millis>1383658945148</millis>
+  <sequence>6</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:25</date>
+  <millis>1383658945618</millis>
+  <sequence>7</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:26</date>
+  <millis>1383658946234</millis>
+  <sequence>8</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:27</date>
+  <millis>1383658947370</millis>
+  <sequence>9</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:28</date>
+  <millis>1383658948793</millis>
+  <sequence>10</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Sexo&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:29</date>
+  <millis>1383658949821</millis>
+  <sequence>11</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:30</date>
+  <millis>1383658950455</millis>
+  <sequence>12</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Sexo&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:30</date>
+  <millis>1383658950694</millis>
+  <sequence>13</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:31</date>
+  <millis>1383658951632</millis>
+  <sequence>14</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Sexo&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:31</date>
+  <millis>1383658951840</millis>
+  <sequence>15</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Sexo&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:32</date>
+  <millis>1383658952446</millis>
+  <sequence>16</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-05T11:42:33</date>
+  <millis>1383658953216</millis>
+  <sequence>17</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Sexo&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>

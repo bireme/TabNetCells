@@ -22,16 +22,16 @@ f) Etapas para a execução do processamento:
   1.2) Executar o script 'gera.sh' que tem como parâmetro o diretório de saída
      (item e)  ->    ./gera.sh <outDir>
 
-  Como resultado espera-se no diretório de saída o arquivo index.html o
-  diretório (ed<num>) contendo vários subdiretórios com os arquivos html e os
-  diretórios css e img.
+  Como resultado espera-se no diretório de saída os arquivos index.html e 
+  sitemapindex.xml, os diretórios css e img e os diretórios (A, B, C, ..., G) 
+  contendo os arquivos html.
 
   Etapa 2:
   2.1) Apagar o diretório http://www.homolog.ripsa.org.br/celulasIDB/ no
        servidor de homologação (hm01dx.bireme.br)
 
-  2.2) Copiar o arquivo 'index.html' e os diretórios 'ed<num>', 'css' e 'img'
-       do diretório de saída (item e) para o servidor de homologação 
+  2.2) Copiar o arquivo 'index.html' e os diretórios, 'css', 'img', 'A', 'B',
+       'C', etc do diretório de saída (item e) para o servidor de homologação 
        (hm01dx.bireme.br) no diretório
        hm01dx:/home/aplicacoes-bvs/ripsa/htdocs/celulasIDB
 
@@ -43,13 +43,16 @@ f) Etapas para a execução do processamento:
   conteúdo.
 
   Etapa 4:
-  4.1) Quando receber OK da Juliana, informar o ITI para copiar os arquivos para 
-       o servidor de produção e também executar neste servidor o script 
-       'activate_analytics.sh' no diretório de processamento (item d) que tem 
-       como parâmetro o diretório de saída (item e)  ->    
-       ./activate_analytics.sh <outDir>
+  4.1) Quando receber OK da Juliana, informar o ITI para:
+            a) tornar idêntico o  diretório do o servidor de produção ao do 
+               servidor de homologação.
+            b) executar no servidor de produçao o script 'activate_analytics.sh' 
+               que tem como parâmetro o diretório onde estão os 
+               arquivos (celulasIDB).
+            c) garantir que o arquivo googleb19829a1065590e9.html está presente
+               no diretório /home/aplicacoes-bvs/ripsa/htdocs/celulasIDB
 
-  4.2) Avisar a Juliana sobre o termino do processamento.
+  4.2) Avisar a Juliana sobre o término do processamento.
 
   Como resultado, espera-se poder ver o arquivo index.html na url 
   http://www.ripsa.org.br/celulasIDB/index.html

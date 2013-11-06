@@ -36,12 +36,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -89,6 +89,10 @@ public class URLS {
         }
         if (rootDir == null) {
             throw new NullPointerException("rootDir");
+        }
+        if (url.trim().endsWith(".def")) {
+            throw new NullPointerException(
+                                     "initial url file can not be a def file.");
         }
         final File root = new File(rootDir);
 
@@ -157,10 +161,7 @@ public class URLS {
         }
         if (root == null) {
             throw new NullPointerException("root");
-        }
-
-        final Set<String> urls = loadCsvFromHtml(new URL(url), root);
-        
+        }        
         try {
             Utils.copyDirectory(new File("template/css"), new File(root, "css"));
             Utils.copyDirectory(new File("template/img"), new File(root, "img"));
@@ -168,6 +169,7 @@ public class URLS {
                 Logger.getLogger(Logger.GLOBAL_LOGGER_NAME)
                        .log(Level.SEVERE, "skipping diretory: (css/img)", ioe);
         }
+        final Set<String> urls = loadCsvFromHtml(new URL(url), root);
         
         return urls;
     }
@@ -471,16 +473,20 @@ public class URLS {
         }
 
         while (true) {
-            final String line = reader.readLine();
+            String line = reader.readLine();
             if (line == null) {
                 break;
             }
             final String line2 = line.trim();
 
             if (line2.startsWith("<!--")) {
+                if (line2.endsWith("-->")) {
+                    continue;
+                }
                 skipLine = true;
             } else if (line2.endsWith("-->")) {
                 skipLine = false;
+                line = "";
             }
             if (! skipLine) {
                 builder.append(line);
@@ -737,7 +743,7 @@ public class URLS {
                                    final Set<String> files) throws IOException {
         assert files != null;
         
-        final Map<String,Set<String>> cells = new HashMap<>();
+        final Map<String,Set<String>> cells = new TreeMap<>();
         
         for (String fpath : files) {
             final String[] split = fpath.split("/", 3);
