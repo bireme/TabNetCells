@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2013-11-07T10:12:43</date>
+  <millis>1383826363719</millis>
+  <sequence>0</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message>skipping file: http://tabnet.datasus.gov.br/csv/A101242200_6_42_254.csv</message>
+  <exception>
+    <message>java.io.IOException: null title</message>
+    <frame>
+      <class>br.bireme.tb.CSV_File</class>
+      <method>parseTitle</method>
+      <line>129</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.CSV_File</class>
+      <method>parse0</method>
+      <line>110</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.CSV_File</class>
+      <method>parse</method>
+      <line>91</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>loadCsvFromHtml</method>
+      <line>265</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>loadCsvFromDef</method>
+      <line>423</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>loadCsvFromHtml</method>
+      <line>292</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>loadCsvFromHtml</method>
+      <line>192</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>generateCells</method>
+      <line>172</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>generateFileStructure</method>
+      <line>113</line>
+    </frame>
+    <frame>
+      <class>br.bireme.tb.URLS</class>
+      <method>main</method>
+      <line>870</line>
+    </frame>
+  </exception>
+</record>

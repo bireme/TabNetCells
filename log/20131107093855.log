@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2013-11-07T09:45:11</date>
+  <millis>1383824711704</millis>
+  <sequence>0</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:12</date>
+  <millis>1383824712164</millis>
+  <sequence>1</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:12</date>
+  <millis>1383824712528</millis>
+  <sequence>2</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Faixa_etária&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:12</date>
+  <millis>1383824712889</millis>
+  <sequence>3</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:13</date>
+  <millis>1383824713267</millis>
+  <sequence>4</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:13</date>
+  <millis>1383824713657</millis>
+  <sequence>5</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:14</date>
+  <millis>1383824714089</millis>
+  <sequence>6</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:14</date>
+  <millis>1383824714502</millis>
+  <sequence>7</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:14</date>
+  <millis>1383824714893</millis>
+  <sequence>8</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/d0109.def params:Incremento=Casos_confirmados&amp;Arquivos=doeb10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Nenhum registro selecionado]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:15</date>
+  <millis>1383824715437</millis>
+  <sequence>9</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:16</date>
+  <millis>1383824716200</millis>
+  <sequence>10</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Sexo&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:17</date>
+  <millis>1383824717171</millis>
+  <sequence>11</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:17</date>
+  <millis>1383824717811</millis>
+  <sequence>12</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Sexo&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:18</date>
+  <millis>1383824718013</millis>
+  <sequence>13</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:18</date>
+  <millis>1383824718971</millis>
+  <sequence>14</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Sexo&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:19</date>
+  <millis>1383824719286</millis>
+  <sequence>15</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Sexo&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:19</date>
+  <millis>1383824719984</millis>
+  <sequence>16</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:45:20</date>
+  <millis>1383824720704</millis>
+  <sequence>17</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/a01.def params:Incremento=Distribuição_(%)&amp;Arquivos=popa10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SFaixa_Etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Sexo&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distribui&amp;ccedil;&amp;atilde;o (%)", "Faixa Et&amp;aacute;ria" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T09:52:48</date>
+  <millis>1383825168478</millis>
+  <sequence>18</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/g02.def params:SEscolaridade=TODAS_AS_CATEGORIAS__&amp;Incremento=Prev_hipertensão_arterial&amp;Arquivos=vigtel10.dbf&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;SRegião_(capitais)=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page []</message>
+</record>
+<record>
+  <date>2013-11-07T09:52:48</date>
+  <millis>1383825168747</millis>
+  <sequence>19</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/g02.def params:SEscolaridade=TODAS_AS_CATEGORIAS__&amp;Incremento=Prev_hipertensão_arterial&amp;Arquivos=vigtel10.dbf&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;SRegião_(capitais)=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Região_(capitais)&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Tabulações com cálculo de intervalos de confiança não permitem linhas e colunas com mesmo conteúdo.]</message>
+</record>
+<record>
+  <date>2013-11-07T10:03:52</date>
+  <millis>1383825832926</millis>
+  <sequence>20</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/g03.def params:SEscolaridade=TODAS_AS_CATEGORIAS__&amp;Incremento=Prev_ativ_física_suficiente&amp;Arquivos=vigtel10.dbf&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;SRegião_(capitais)=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page []</message>
+</record>
+<record>
+  <date>2013-11-07T10:03:53</date>
+  <millis>1383825833217</millis>
+  <sequence>21</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/g03.def params:SEscolaridade=TODAS_AS_CATEGORIAS__&amp;Incremento=Prev_ativ_física_suficiente&amp;Arquivos=vigtel10.dbf&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;SRegião_(capitais)=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Região_(capitais)&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Tabulações com cálculo de intervalos de confiança não permitem linhas e colunas com mesmo conteúdo.]</message>
+</record>
+<record>
+  <date>2013-11-07T10:11:38</date>
+  <millis>1383826298515</millis>
+  <sequence>22</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/f06.def params:Incremento=Proporção_de_nascidos_vivos(%)&amp;Arquivos=nasc10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Propor&amp;ccedil;&amp;atilde;o de nascidos vivos(%)", "N&amp;uacute;mero de consultas" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:11:39</date>
+  <millis>1383826299605</millis>
+  <sequence>23</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/f06.def params:Incremento=Proporção_de_nascidos_vivos(%)&amp;Arquivos=nasc10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Propor&amp;ccedil;&amp;atilde;o de nascidos vivos(%)", "N&amp;uacute;mero de consultas" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:11:40</date>
+  <millis>1383826300185</millis>
+  <sequence>24</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/f06.def params:Incremento=Proporção_de_nascidos_vivos(%)&amp;Arquivos=nasc10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Propor&amp;ccedil;&amp;atilde;o de nascidos vivos(%)", "N&amp;uacute;mero de consultas" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:11:40</date>
+  <millis>1383826300870</millis>
+  <sequence>25</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/f06.def params:Incremento=Proporção_de_nascidos_vivos(%)&amp;Arquivos=nasc10.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Propor&amp;ccedil;&amp;atilde;o de nascidos vivos(%)", "N&amp;uacute;mero de consultas" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:27</date>
+  <millis>1383826767510</millis>
+  <sequence>26</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:28</date>
+  <millis>1383826768527</millis>
+  <sequence>27</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:28</date>
+  <millis>1383826768770</millis>
+  <sequence>28</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:30</date>
+  <millis>1383826770154</millis>
+  <sequence>29</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:30</date>
+  <millis>1383826770911</millis>
+  <sequence>30</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:31</date>
+  <millis>1383826771180</millis>
+  <sequence>31</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:31</date>
+  <millis>1383826771574</millis>
+  <sequence>32</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:32</date>
+  <millis>1383826772386</millis>
+  <sequence>33</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:32</date>
+  <millis>1383826772666</millis>
+  <sequence>34</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:32</date>
+  <millis>1383826772922</millis>
+  <sequence>35</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_leito&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:33</date>
+  <millis>1383826773674</millis>
+  <sequence>36</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_leito&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:33</date>
+  <millis>1383826773962</millis>
+  <sequence>37</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_prestador&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:34</date>
+  <millis>1383826774712</millis>
+  <sequence>38</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_prestador&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:34</date>
+  <millis>1383826774964</millis>
+  <sequence>39</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:35</date>
+  <millis>1383826775698</millis>
+  <sequence>40</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:36</date>
+  <millis>1383826776040</millis>
+  <sequence>41</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:36</date>
+  <millis>1383826776294</millis>
+  <sequence>42</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:36</date>
+  <millis>1383826776552</millis>
+  <sequence>43</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:36</date>
+  <millis>1383826776806</millis>
+  <sequence>44</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:37</date>
+  <millis>1383826777590</millis>
+  <sequence>45</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Esfera_administrativa&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:37</date>
+  <millis>1383826777836</millis>
+  <sequence>46</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Esfera_administrativa&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:38</date>
+  <millis>1383826778652</millis>
+  <sequence>47</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:38</date>
+  <millis>1383826778968</millis>
+  <sequence>48</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:39</date>
+  <millis>1383826779262</millis>
+  <sequence>49</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:40</date>
+  <millis>1383826780024</millis>
+  <sequence>50</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:40</date>
+  <millis>1383826780307</millis>
+  <sequence>51</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:40</date>
+  <millis>1383826780586</millis>
+  <sequence>52</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:41</date>
+  <millis>1383826781406</millis>
+  <sequence>53</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_leito&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:41</date>
+  <millis>1383826781684</millis>
+  <sequence>54</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_leito&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:43</date>
+  <millis>1383826783726</millis>
+  <sequence>55</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:44</date>
+  <millis>1383826784298</millis>
+  <sequence>56</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:44</date>
+  <millis>1383826784795</millis>
+  <sequence>57</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_SUS_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos SUS p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:45</date>
+  <millis>1383826785749</millis>
+  <sequence>58</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:46</date>
+  <millis>1383826786839</millis>
+  <sequence>59</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:47</date>
+  <millis>1383826787151</millis>
+  <sequence>60</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:49</date>
+  <millis>1383826789672</millis>
+  <sequence>61</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:50</date>
+  <millis>1383826790809</millis>
+  <sequence>62</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:51</date>
+  <millis>1383826791152</millis>
+  <sequence>63</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:51</date>
+  <millis>1383826791496</millis>
+  <sequence>64</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:52</date>
+  <millis>1383826792639</millis>
+  <sequence>65</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:52</date>
+  <millis>1383826792960</millis>
+  <sequence>66</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:53</date>
+  <millis>1383826793293</millis>
+  <sequence>67</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_leito&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:54</date>
+  <millis>1383826794192</millis>
+  <sequence>68</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_leito&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:54</date>
+  <millis>1383826794500</millis>
+  <sequence>69</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_prestador&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:55</date>
+  <millis>1383826795297</millis>
+  <sequence>70</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_prestador&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:55</date>
+  <millis>1383826795636</millis>
+  <sequence>71</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:56</date>
+  <millis>1383826796546</millis>
+  <sequence>72</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:57</date>
+  <millis>1383826797074</millis>
+  <sequence>73</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/esfera&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_prestador&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/esfera", "Esfera administrativa" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:57</date>
+  <millis>1383826797374</millis>
+  <sequence>74</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:57</date>
+  <millis>1383826797780</millis>
+  <sequence>75</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:58</date>
+  <millis>1383826798130</millis>
+  <sequence>76</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Capital&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:59</date>
+  <millis>1383826799076</millis>
+  <sequence>77</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Esfera_administrativa&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:19:59</date>
+  <millis>1383826799482</millis>
+  <sequence>78</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Esfera_administrativa&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:00</date>
+  <millis>1383826800312</millis>
+  <sequence>79</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:00</date>
+  <millis>1383826800610</millis>
+  <sequence>80</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:00</date>
+  <millis>1383826800964</millis>
+  <sequence>81</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:02</date>
+  <millis>1383826802060</millis>
+  <sequence>82</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:02</date>
+  <millis>1383826802422</millis>
+  <sequence>83</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:02</date>
+  <millis>1383826802730</millis>
+  <sequence>84</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Região_Metropolitana&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:03</date>
+  <millis>1383826803762</millis>
+  <sequence>85</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_leito&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:04</date>
+  <millis>1383826804038</millis>
+  <sequence>86</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Tipo_de_leito&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:06</date>
+  <millis>1383826806212</millis>
+  <sequence>87</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=--Não-Ativa--&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:06</date>
+  <millis>1383826806539</millis>
+  <sequence>88</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Esfera_administrativa&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:20:06</date>
+  <millis>1383826806874</millis>
+  <sequence>89</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabnet.exe?idb2011/e22.def params:STipo_de_leito=TODAS_AS_CATEGORIAS__&amp;SEsfera_administrativa=TODAS_AS_CATEGORIAS__&amp;Incremento=Distr(%)_leitos_exist_p/prest.&amp;Arquivos=leit10.dbf&amp;STipo_de_prestador=TODAS_AS_CATEGORIAS__&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;Coluna=Tipo_de_leito&amp;SCapital=TODAS_AS_CATEGORIAS__&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page [Para tabelas de "Distr(%) leitos exist p/prest.", "Tipo de prestador" deve ser selecionado nas linhas ou colunas]</message>
+</record>
+<record>
+  <date>2013-11-07T10:38:41</date>
+  <millis>1383827921774</millis>
+  <sequence>90</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/b0201b.def params:SCor/raça=TODAS_AS_CATEGORIAS__&amp;Incremento=%População_11_e_mais_anos_est&amp;Arquivos=pnad09.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SSituação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Faixa_etária&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page []</message>
+</record>
+<record>
+  <date>2013-11-07T10:46:00</date>
+  <millis>1383828360292</millis>
+  <sequence>91</sequence>
+  <logger>global</logger>
+  <level>SEVERE</level>
+  <class>br.bireme.tb.URLS</class>
+  <method>loadCsvFromHtml</method>
+  <thread>1</thread>
+  <message> skipping loadCsvFromHtml/Def file: http://tabnet.datasus.gov.br/cgi/tabcgi.exe?idb2011/b0201b.def params:SCor/raça=TODAS_AS_CATEGORIAS__&amp;Incremento=%População_11_e_mais_anos_est&amp;Arquivos=pnad09.dbf&amp;SRegião_Metropolitana=TODAS_AS_CATEGORIAS__&amp;SUnidade_da_Federação=TODAS_AS_CATEGORIAS__&amp;SSituação=TODAS_AS_CATEGORIAS__&amp;SFaixa_etária=TODAS_AS_CATEGORIAS__&amp;Linha=Unidade_da_Federação&amp;SRegião=TODAS_AS_CATEGORIAS__&amp;SSexo=TODAS_AS_CATEGORIAS__&amp;Coluna=Nível_de_escolaridade&amp;formato=table&amp;mostre=Mostra
+CSV link not found into def page []</message>
+</record>

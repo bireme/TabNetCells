@@ -74,7 +74,7 @@ public class URLS {
                     "(?i)<a href=\"([^\"]+)\">.*?Ficha de qualificação.*?</a>");
     private static final Pattern URL_PATTERN = Pattern.compile(
                                  "(?s)<a[^>]*?href=\"([^\"]+)\"[^>]*?>.+?</a>");
-    private static final int MAX_LEVEL = 2;
+    private static final int MAX_LEVEL = 3;
     
     private static final Pattern STAR_PAT = Pattern.compile("\\*+");
     
@@ -227,7 +227,7 @@ public class URLS {
         assert root != null;
         
         int[] ret = new int[] { tableNum, 0 };
-
+        
         if ((postParam != null) || (!history.contains(html))) {
             if (level <= MAX_LEVEL) {
                 history.add(html);
@@ -586,18 +586,20 @@ public class URLS {
 
         final Set<URL> ret = new HashSet<>();
 
-        if (! history.contains(url)) {
-            final Matcher mat = URL_PATTERN.matcher(content);
+        final Matcher mat = URL_PATTERN.matcher(content);
 
-            while (mat.find()) {
-                final String furl = mat.group(1);
-                if (furl.endsWith(".def") || furl.endsWith(".html")
-                                                     || furl.endsWith(".htm")) {
-                    ret.add(withDomain(url, furl));
+        while (mat.find()) {
+            final String furl = mat.group(1);
+            if (furl.endsWith(".def") || furl.endsWith(".html")
+                                                 || furl.endsWith(".htm")) {
+                final URL domainUrl = withDomain(url, furl);
+                if (!history.contains(domainUrl)) {
+                    ret.add(domainUrl);
                 }
             }
-            history.add(url);
         }
+        history.add(url);
+
         return ret;
     }
 
