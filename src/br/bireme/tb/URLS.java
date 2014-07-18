@@ -80,6 +80,7 @@ public class URLS {
     
     private static final Pattern REFUSE_PAT =
                                           Pattern.compile("\\s*[\\.\\*]+\\s*");
+    
 
     public static void generateFileStructure(final String url,
                                              final String rootDir)

@@ -1,4 +1,4 @@
-/*=========================================================================
+ /*=========================================================================
 
     Copyright © 2013 BIREME/PAHO/WHO
 
@@ -131,6 +131,7 @@ class Cell {
         this.notes = notes;
     }
 
+    
     UrlElem getElem() {
         return elem;
     }
@@ -238,7 +239,16 @@ class Cell {
         builder.append("<html>\n");
 
         builder.append("<head>\n");
-        builder.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
+        if ((title != null) && (!title.isEmpty())) {
+            builder.append("<title>");
+            builder.append(title);
+            builder.append("</title>\n");
+        }
+        builder.append("<meta name=\"description\" content=\" Conecta uma celula da tabela de indicadores basicos de saude do DATASUS com uma Ficha de Qualificacao da RIPSA\">");
+        builder.append("<meta name=\"keywords\" content=\"datasus, tabnet, ripsa, idb, ministerio da saude, indicadores dados basicos, saude\">");
+        builder.append("<meta name=\"robots\" content=\"index, nofollow\">");
+        builder.append("<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">");
+        builder.append("<meta http-equiv=\"content-language\" content=\"pt-br\">");        
         builder.append("</head>\n");
 
         builder.append("<body>\n");
